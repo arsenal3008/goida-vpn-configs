@@ -106,7 +106,7 @@ EXTRA_URLS_FOR_26 = [
     "https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt",
     "https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/2",
     "https://raw.githubusercontent.com/gbwltg/gbwl/refs/heads/main/m3EsPqwmlc",
-    "https://bp.wl.free.nf/confs/wl.txt",
+    "https://whiteprime.github.io/xraycheck/configs/white-list_available",
     "https://storage.yandexcloud.net/cid-vpn/whitelist.txt"
 ]
 
