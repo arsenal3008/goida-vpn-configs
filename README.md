@@ -344,7 +344,7 @@ python main.py                  # конфиги появятся в ../githubmi
 
 <summary>🖥 Гайд для Windows, Linux</summary>
 
-**1.** Скачиваем **«Throne»** — [Windows 10/11](https://github.com/throneproj/Throne/releases/download/1.0.13/Throne-1.0.13-windows64.zip) / [Windows 7/8/8.1](https://github.com/throneproj/Throne/releases/download/1.0.13/Throne-1.0.13-windowslegacy64.zip) / [Linux](https://github.com/throneproj/Throne/releases/download/1.0.13/Throne-1.0.13-linux-amd64.zip)
+**1.** Скачиваем **«Throne»** — [Windows 10/11](https://github.com/throneproj/Throne/releases/download/1.1.0/Throne-1.1.0-windows64.zip) / [Windows 7/8/8.1](https://github.com/throneproj/Throne/releases/download/1.1.0/Throne-1.1.0-windowslegacy64.zip) / [Linux](https://github.com/throneproj/Throne/releases/download/1.1.0/Throne-1.1.0-linux-amd64.zip)
 
 **2.** Копируем в буфер обмена: 
 
