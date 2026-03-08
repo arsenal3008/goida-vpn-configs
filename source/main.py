@@ -107,7 +107,7 @@ EXTRA_URLS_FOR_26 = [
     "https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/2",
     "https://raw.githubusercontent.com/gbwltg/gbwl/refs/heads/main/m3EsPqwmlc",
     "https://whiteprime.github.io/xraycheck/configs/white-list_available",
-    "https://gitflic.ru/project/sigil/my-new-cool-project/blob/raw?file=whitelist"
+    "https://wlrus.lol/confs/selected.txt"
 ]
 
 # Best-effort fetch tuning for optional sources (26-й файл)
