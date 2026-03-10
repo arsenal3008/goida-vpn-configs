@@ -84,7 +84,7 @@ URLS = [
     "https://raw.githubusercontent.com/expressalaki/ExpressVPN/refs/heads/main/configs3.txt", #12
     "https://raw.githubusercontent.com/MahsaNetConfigTopic/config/refs/heads/main/xray_final.txt", #13
     "https://github.com/LalatinaHub/Mineral/raw/refs/heads/master/result/nodes", #14
-    "https://github.com/miladtahanian/Config-Collector/raw/refs/heads/main/vless_iran.txt", #15
+    "https://raw.githubusercontent.com/miladtahanian/Config-Collector/refs/heads/main/mixed_iran.txt", #15
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/refs/heads/main/sub", #16
     "https://github.com/MhdiTaheri/V2rayCollector_Py/raw/refs/heads/main/sub/Mix/mix.txt", #17
     "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt", #18
