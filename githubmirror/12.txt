@@ -5006,3 +5006,19 @@ ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206Ly9MeURZbTh2akFFcmcxcE1SWldXcXVSODdpekpTRGx
 vless://dab667ce-f06a-4533-a369-ee2925ca6ec6@c1.msjia8844.site:31532?security=none&allowInsecure=0&encryption=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 vless://1820e4e5-00ba-4491-a5db-b1a0ea29815d@102.37.139.137:49804?security=reality&encryption=none&pbk=U2-1vgwW4xoiOKuW0w2POIYLExOcehpplxquGqQq0WQ&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=aparat.com&sid=64a0fd0b285cd962#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
+
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206Ly9MeURZbTh2akFFcmcxcE1SWldXcXVSODdpekpTRGxoaGNtRUtjTHpZbz06d3hhMlBLYkYwLzFVclJpQm9lV056YUxWRnEzNjZIRzc1SVlTK0ZqVTdPYz0#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vmess://eyJhZGQiOiAiMTg4LjEyMS4xMTkuMTcyIiwgImFpZCI6ICIwIiwgImFscG4iOiAiIiwgImZwIjogIiIsICJob3N0IjogIiIsICJpZCI6ICIzZmEwNmM1NS1kZjRiLTQ3ZGUtOGZmMi00MDk0NzAzMzhhM2IiLCAiaW5zZWN1cmUiOiAiMCIsICJuZXQiOiAidGNwIiwgInBhdGgiOiAiIiwgInBvcnQiOiAiMjAyMCIsICJwcyI6ICJcdWQ4M2NcdWRmMTAgVENQLU5vbmUgfCBAbWVsaXByb3h5eSIsICJzY3kiOiAiYXV0byIsICJzbmkiOiAiIiwgInRscyI6ICIiLCAidHlwZSI6ICJub25lIiwgInYiOiAiMiJ9
+
+vmess://eyJhZGQiOiAiMTg4LjEyMS4xMjAuMTQwIiwgImFpZCI6ICIwIiwgImFscG4iOiAiIiwgImZwIjogIiIsICJob3N0IjogIiIsICJpZCI6ICIyNzAwODFkOC0wOWU3LTRiMGYtYTllNi05MGFjZDJiMzIwNzIiLCAiaW5zZWN1cmUiOiAiMCIsICJuZXQiOiAidGNwIiwgInBhdGgiOiAiIiwgInBvcnQiOiAiMjEzNjgiLCAicHMiOiAiXHVkODNjXHVkZjEwIFRDUC1Ob25lIHwgQGZpbGVtYmFkIiwgInNjeSI6ICJhdXRvIiwgInNuaSI6ICIiLCAidGxzIjogIiIsICJ0eXBlIjogIm5vbmUiLCAidiI6ICIyIn0=
+
+vless://dab667ce-f06a-4533-a369-ee2925ca6ec6@c1.msjia8844.site:31532?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vmess://eyJuZXQiOiAidGNwIiwgImlkIjogIjI3MDA4MWQ4LTA5ZTctNGIwZi1hOWU2LTkwYWNkMmIzMjA3MiIsICJwcyI6ICJcdWQ4M2NcdWRmMTAgVENQLU5vbmUgfCBAZmlsZW1iYWQiLCAidHlwZSI6ICJub25lIiwgImFkZCI6ICIxODguMTIxLjEyMC4xNDAiLCAidGxzIjogIm5vbmUiLCAicG9ydCI6ICIyMTM2OCIsICJzY3kiOiAiYXV0byJ9
+
+vless://7a66b8ef-9713-4b69-b839-6bb45070af35@91.99.198.174:443?security=none&encryption=none&host=zula.ir%2F%3FTelegram%40MTMVPN&headerType=http&type=tcp#%F0%9F%87%A9%F0%9F%87%AA%20TCP-None%20%7C%20%40manVPN
+
+vless://7e2b763e-31ab-4777-9428-a3ad0009208c@102.37.131.55:8080?security=none&encryption=none&host=102.37.131.55&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://ef3275fa-c3fe-4fb9-b82c-59cc698e30fa@185.143.233.5:443?path=%2F%3Fed%3D443&security=tls&encryption=none&insecure=0&host=alef.ir.oadeflantrogm.realirshop.com&fp=randomized&type=ws&allowInsecure=0&sni=alef.ir.oadeflantrogm.realirshop.com#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
