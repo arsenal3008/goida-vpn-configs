@@ -4905,3 +4905,13 @@ vless://f9a84da7-102f-4066-8593-095c4a4af003@102.37.157.78:6013?path=%2F&securit
 vless://6202b230-417c-4d8e-b624-0f71afa9c75d@94.23.74.37:8443?path=%2F%3Fed%3D2560%26Telegram%F0%9F%87%A8%F0%9F%87%B3%20%40WangCai2&security=tls&encryption=none&host=sni.111000.v6.navy&type=ws&sni=sni.111000.v6.navy#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
 
 vless://6202b230-417c-4d8e-b624-0f71afa9c75d@94.23.78.198:2053?path=%2F%3Fed%3D2560%26Telegram%F0%9F%87%A8%F0%9F%87%B3%20%40WangCai2&security=tls&encryption=none&host=sni.111000.v6.navy&type=ws&sni=sni.111000.v6.navy#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
+vmess://eyJhZGQiOiAiREUyLklQU0VOVEVSLk5FVCIsICJhaWQiOiAiMCIsICJob3N0IjogImQxZ3NsaTBoYzcyMnZiLmNsb3VkZnJvbnQubmV0IiwgImlkIjogIjIwN2FkMDI1LTgwZDMtNGYxZS1hMzAzLTY0Nzc1N2QxNDhkMiIsICJuZXQiOiAid3MiLCAicGF0aCI6ICIvIiwgInBvcnQiOiA4MCwgInBzIjogIlx1ZDgzY1x1ZGYxMCBXUy1Ob25lIHwgQGZpbGVtYmFkIiwgInNjeSI6ICJhdXRvIiwgInR5cGUiOiAibm9uZSIsICJ2IjogIjIifQ==
+
+vless://4087bf26-2272-4300-bf13-15e58cdf8417@37.202.248.51:3333?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://6bd7ac2f-a360-4e5e-91a9-f518fdd63143@Sup.FIDEUS.EU:53333?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vmess://eyJ2IjogIjIiLCAicHMiOiAiXHVkODNjXHVkZjEwIEdSUEMtTm9uZSB8IEBmaWxlbWJhZCIsICJhZGQiOiAiNTEuMTQ1LjEyNC4yMDIiLCAicG9ydCI6IDQyNSwgImlkIjogImY5NDdlMzYwLTMwZjgtNGYyMS1iYjI1LWVjYzk3MjUyZTRkOSIsICJzY3kiOiAiYXV0byIsICJuZXQiOiAiZ3JwYyIsICJ0bHMiOiAibm9uZSIsICJwYXRoIjogIm1jaS5pciIsICJhdXRob3JpdHkiOiAiIiwgInR5cGUiOiAibXVsdGkifQ==
+
+vmess://eyJhZGQiOiAiNTEuMTQ1LjEyNC4yMDIiLCAiYWlkIjogIjAiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIiwgImhvc3QiOiAiIiwgImlkIjogImY5NDdlMzYwLTMwZjgtNGYyMS1iYjI1LWVjYzk3MjUyZTRkOSIsICJpbnNlY3VyZSI6ICIwIiwgIm5ldCI6ICJncnBjIiwgInBhdGgiOiAibWNpLmlyIiwgInBvcnQiOiAiNDI1IiwgInBzIjogIlx1ZDgzY1x1ZGYxMCBHUlBDLU5vbmUgfCBAZmlsZW1iYWQiLCAic2N5IjogImF1dG8iLCAic25pIjogIiIsICJ0bHMiOiAiIiwgInR5cGUiOiAibXVsdGkiLCAidiI6ICIyIn0=
