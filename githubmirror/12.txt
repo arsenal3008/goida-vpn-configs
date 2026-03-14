@@ -1,25 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-trojan://SamNet2026SecurePass@104.168.82.83:10425?type=raw&headerType=none&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vmess://eyJhZGQiOiAiMTQyLjE3MS42NS4xMDYiLCAiaWQiOiAiZjkxYzFjYzItMDVmZS00ZWZkLWJhMDktODZjYjZiZWMxOWUzIiwgInBvcnQiOiAiMTA0MTIiLCAic2N5IjogImF1dG8iLCAidiI6ICIyIiwgIm5ldCI6ICJyYXciLCAidHlwZSI6ICJub25lIiwgInRscyI6ICJub25lIiwgInBzIjogIlx1ZDgzY1x1ZGYxMCBUQ1AtTm9uZSB8IEBmaWxlbWJhZCJ9
-
-vmess://eyJhZGQiOiAiMTA3LjE3NS4xMzQuMTQ4IiwgImlkIjogImY5MWMxY2MyLTA1ZmUtNGVmZC1iYTA5LTg2Y2I2YmVjMTllMyIsICJwb3J0IjogIjEwNDE0IiwgInNjeSI6ICJhdXRvIiwgInYiOiAiMiIsICJuZXQiOiAicmF3IiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAibm9uZSIsICJwcyI6ICJcdWQ4M2NcdWRmMTAgVENQLU5vbmUgfCBAZmlsZW1iYWQifQ==
-
-vless://948fac3c-42bf-41a6-a5f9-704d36ff0d8d@23.152.200.75:443?&security=tls&fp=random&alpn=http/1.1&sni=snippet.fgfw.ccwu.cc&type=ws&headerType=none&host=snippet.fgfw.ccwu.cc&path=%2Fdanfeng#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vmess://eyJhZGQiOiAiMTk4LjIzLjI0OS4xNTQiLCAiaWQiOiAiZjkxYzFjYzItMDVmZS00ZWZkLWJhMDktODZjYjZiZWMxOWUzIiwgInBvcnQiOiAiMTA0MTAiLCAic2N5IjogImF1dG8iLCAidiI6ICIyIiwgIm5ldCI6ICJyYXciLCAidHlwZSI6ICJub25lIiwgInRscyI6ICJub25lIiwgInBzIjogIlx1ZDgzY1x1ZGYxMCBUQ1AtTm9uZSB8IEBmaWxlbWJhZCJ9
-
-vmess://eyJhZGQiOiAiNDYuMjI1LjU0Ljc1IiwgImlkIjogIjA2NTRkNjRkLTA4YmYtNDNlNS1hZDQ0LTE4YTdkMWE4ZDZmNyIsICJwb3J0IjogIjEwNDEwIiwgInNjeSI6ICJhdXRvIiwgInYiOiAiMiIsICJuZXQiOiAicmF3IiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAibm9uZSIsICJwcyI6ICJcdWQ4M2NcdWRmMTAgVENQLU5vbmUgfCBAZmlsZW1iYWQifQ==
-
-vmess://eyJhZGQiOiAiMTk4LjIzLjE4OC4xNjUiLCAiaWQiOiAiZjkxYzFjYzItMDVmZS00ZWZkLWJhMDktODZjYjZiZWMxOWUzIiwgInBvcnQiOiAiMTA0MTciLCAic2N5IjogImF1dG8iLCAidiI6ICIyIiwgIm5ldCI6ICJyYXciLCAidHlwZSI6ICJub25lIiwgInRscyI6ICJub25lIiwgInBzIjogIlx1ZDgzY1x1ZGYxMCBUQ1AtTm9uZSB8IEBmaWxlbWJhZCJ9
-
-vmess://eyJhZGQiOiAiNDYuMjI1LjYxLjk3IiwgImlkIjogIjFhNjhkZWNlLTQ0NTctNGFhZS04OTlmLWFkODI1YzJkYTIyZiIsICJwb3J0IjogIjEwNDEwIiwgInNjeSI6ICJhdXRvIiwgInYiOiAiMiIsICJuZXQiOiAicmF3IiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAibm9uZSIsICJwcyI6ICJcdWQ4M2NcdWRmMTAgVENQLU5vbmUgfCBAZmlsZW1iYWQifQ==
-
-vless://00000000-0000-4000-8000-000000000000@154.21.82.210:30001?&security=tls&sni=f7on3t1zlwlvhmkz6ji6w7uk72k.sate.qzz.io&type=ws&headerType=none&host=f7on3t1zlwlvhmkz6ji6w7uk72k.sate.qzz.io&path=%2F%40Marisa_kristi#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vless://094d2a10-5bfe-4639-9e19-54de90d29fbf@51.250.67.33:8448?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=qq&sni=rutube.ru&pbk=Ox4BT0R5103EpplP2y6TIVv0VC-xBR2-YT6EJ4YmkUw&spx=/#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
-
 vless://04310c16-0aed-43ce-9cdb-e8cbc6966ef5@185.112.59.4:8446?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=max.ru&pbk=Az7yi4Q-UKI-hsYKtO4wvn1iW4JVW5ivrIXO0ICYtE0&spx=/#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
 
 vless://c93a2c3e-62f0-46ec-9c75-b75e16d2b276@85.17.192.90:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=www.jobinvest.ru&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
@@ -9652,3 +9632,23 @@ vless://57833c26-acd7-460a-9499-2b3233c19438@185.143.233.200:443?path=%2F%3Fed%3
 trojan://q2GRUM1-odJBWq_KV6xv2fuNvu8ed-@195.66.25.251:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=8443.golden-cards.me#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
 
 ss://bm9uZToxNGIwMmUyYS04OTMwLTRhZmItODQxMi1lYTRhNDk1NGNhNWI@50.62.88.16:443#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+trojan://telegram-id-directvpn@13.39.7.170:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40DirectVPN
+
+vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@13.39.7.170:22224?type=ws&security=tls&path=%2Ftelegram-channel-vlessconfig&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20WS-TLS%20%7C%20%40VlessConfig
+
+trojan://telegram-id-privatevpns@13.39.7.170:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20TCP-TLS%20%7C%20%40PrivateVPNs
+
+vless://27cf8e51-e559-4f93-a462-7f09af6ce0f9@stm.freequenceteam.com:57326?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+ss://bm9uZToxNGIwMmUyYS04OTMwLTRhZmItODQxMi1lYTRhNDk1NGNhNWI=@50.62.88.16:443#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://7243243b-297b-47f0-8c13-c67f61b66feb@176.124.203.228:443?security=reality&encryption=none&pbk=p9OR29TWTl-GViMyOHeQWWd0WZI63MkiK49O3CZ62QA&headerType=none&fp=chrome&type=tcp&sni=wildberries.ru&sid=ba9f3c7d5e1a8b4c#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
+
+vmess://eyJhZGQiOiJkQy0yLkNlTnRSQWxuRXQuQ0ZEIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiIiLCJpZCI6IjIzM2VlYWY3LWU4MGYtNGQ5Yy05M2YxLWEyZGI1ZWZlMWQ5MiIsIm5ldCI6InRjcCIsInBhdGgiOiIiLCJwb3J0IjoiMzAwMSIsInBzIjoi#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vmess://eyJhZGQiOiJkQy0yLmNFTnRSYUxuRXQuQ2xJY0siLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiMjMzZWVhZjctZTgwZi00ZDljLTkzZjEtYTJkYjVlZmUxZDkyIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiIzMDAwIiwicHMiOiI#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://#%F0%9F%8C%90%20TCP-None%20%7C%20%40Blue_star_Vip
+
+vless://8164cdb1-5b9b-49e1-83ef-b24a5c4c3ba8@g1-de2-user.a1mshop.ir:14300?security=none&encryption=none&host=aparat.com&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
