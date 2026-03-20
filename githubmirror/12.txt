@@ -1,29 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-trojan://telegram-id-directvpn@13.36.148.207:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40DirectVPN
-
-vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@13.36.148.207:22224?type=ws&security=tls&path=%2Ftelegram-channel-vlessconfig&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20WS-TLS%20%7C%20%40VlessConfig
-
-trojan://telegram-id-privatevpns@13.36.148.207:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20TCP-TLS%20%7C%20%40PrivateVPNs
-
-vless://687ddf6b-a9cf-4cf7-9767-4fdad5d8ab26@mh52m5fsx0ztzs0jb1r6g4z9mn9o2c.ipsumnetwork.com:8540?type=tcp&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://553faafb-9d5e-4986-a2ab-450ad9fc6a3f@90909.sbs:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&security=reality&sni=dropbox.com&type=tcp#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
-
-vless://e8fb0f43-3497-4ef3-8a89-35bae56549b7@93.94.51.8:13380?security=reality&encryption=none&pbk=JitkQnVQffSjGpth1UKvZP4yLX6HmcshmClfzbC70T4&headerType=none&fp=chrome&spx=%2F&type=tcp&sni=yandex.ru&sid=99de062f46387d3e#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
-
-
-vless://7559843a-dd29-4809-9e99-7948d23c8bae@prime.dissertationhelpspecialist.com:2053?type=grpc&encryption=none&serviceName=SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet&authority=&security=reality&pbk=mf8KAFdlE3Ze2v2_UJSh7LQjug-aiyV-IrTnlVBCCgM&fp=firefox&sni=tgju.org&sid=f6bf7084&spx=%2F#%F0%9F%8C%90%20GRPC-Reality%20%7C%20%40filembad
-
-
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpmNTRjZGVlMTBmOGIyNWNl@57.129.95.38:11201#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://6e1bdcda-c17f-4a65-9d7c-f03536236541@85.133.240.82:35812?security=reality&encryption=none&pbk=LOS87LofEJA0paPzrS2mIFhmTaqkOZC-AUFgNvE1UEs&headerType=none&fp=chrome&type=tcp&sni=learn.microsoft.com&sid=82cada35130f1ef2#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40saministamm
-
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206WjdqcEhQaFhRdVkvQ0o3bmdway9GeEYrR3FCV2Q0S0IyRkxYV2JxWXBYST06MVBXL2VzaWl6K0hiTUtRTE9GbmpKVlE5TWN1ZElaVWM2K09DK01KTEZLdz0%3D#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vmess://eyJuZXQiOiAidGNwIiwgImlkIjogIjQ4OGU4N2VlLTA3NGMtNGU1My05OGVhLTYzOTIyODhiZGM3MSIsICJwYXRoIjogIiIsICJwb3J0IjogIjE3ODU4IiwgImhvc3QiOiAiIiwgInBzIjogIlx1ZDgzY1x1ZGYxMCBUQ1AtTm9uZSB8IEBmaWxlbWJhZCIsICJzY3kiOiAiYXV0byIsICJ0eXBlIjogIm5vbmUiLCAiYWRkIjogIjE1MS4yNDMuMy41OSJ9
-
 vless://3e82b093-f488-4f9f-80a4-67b530a12a5d@packetnet.bache-molavi.sbs:56995?type=tcp&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 vless://28455c79-1165-46a2-a1a9-ead96ad9c5cb@tokyo.high-speed-test-56424.me:443?security=reality&encryption=none&pbk=Cv7khsXDblOJONTX99gBPIlG7ph7nMMrQBiay8kFDXE&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=aws.amazon.com&sid=42#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
@@ -248,6 +224,8 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTowY2RkZTY5NTg3MzU2NWVlQDM4LjU0LjU5LjM4OjExMjA
 
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTowY2RkZTY5NTg3MzU2NWVlQDM4LjU0LjU5LjM4OjExMjA0#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
+vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@13.36.148.207:22224?path=%2Ftelegram-channel-vlessconfig&security=tls&sni=trojan.burgerip.co.uk&type=ws#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
 vless://64d3d460-d940-4db3-a34f-45ee82a51731@146.75.121.57:80?encryption=none&security=none&type=xhttp&host=tignaltofan.global.ssl.fastly.net&path=%2FTignaliSWithYou&mode=auto#%F0%9F%8C%90%20XHTTP-None%20%7C%20%40filembad
 
 vless://aa4ea8e1-86ca-4e5e-9e14-824b139870b4@144.31.130.242:8081?encryption=none&type=tcp&security=reality&fp=chrome&sni=max.ru&pbk=Z84J2IelR9ch3k8VtlVhhs5ycBUlXA7wHBWcBrjqnAw&sid=7dbf7d3233971d5c#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
@@ -295,6 +273,12 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo1Yjk3ODA0N2I0N2Y3ZWFi@154.205.154.184:11201#
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBUmd2R1p5d0ErZ2FjZ0dWMjZCdm11MDUrd1ptUlcvaitBZFUrWjhCdDQ0PQ@154.205.150.157:990#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 
+
+vless://6e1bdcda-c17f-4a65-9d7c-f03536236541@85.133.240.82:35812?security=reality&encryption=none&pbk=LOS87LofEJA0paPzrS2mIFhmTaqkOZC-AUFgNvE1UEs&headerType=none&fp=chrome&type=tcp&sni=learn.microsoft.com&sid=82cada35130f1ef2#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40V2HUBIR
+
+trojan://telegram-id-directvpn@13.36.148.207:22223?alpn=http%2F1.1&headerType=none&security=tls&sni=trojan.burgerip.co.uk&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
+
+trojan://telegram-id-privatevpns@13.36.148.207:22222?alpn=http%2F1.1&headerType=none&security=tls&sni=trojan.burgerip.co.uk&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
 
 vless://aa4ea8e1-86ca-4e5e-9e14-824b139870b4@144.31.130.242:8080?encryption=none&type=tcp&security=reality&fp=chrome&sni=main.tortvpnbot.world&pbk=w28tNIWZCfW4X9aQDLwXECK3pU59zihJ0GIMA13u5X8#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
 
@@ -8040,3 +8024,24 @@ vless://6e342451-814c-4f51-803c-59107f0540f2@89.149.243.207:443?security=reality
 vless://1667c559-b95b-490e-a45b-4c3ea2b1c52d@www.genshinclub.ir:443?encryption=none&security=reality&sni=movie.genshinclub.ir&fp=firefox&pbk=7RnHm0iBdV4mH-3xQ-2urtMp6OMPJ0fGRA3RBV8dino&sid=f04818bf&spx=%2Fx4gTrPMZ7ZRHF4C&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
 
 vless://c1b21f1a-4b8f-442a-9b2a-f0d7892b9ee9@s2.bookeeper.space:1010?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+trojan://telegram-id-directvpn@13.36.80.221:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40DirectVPN
+
+vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@13.36.80.221:22224?type=ws&security=tls&path=%2Ftelegram-channel-vlessconfig&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20WS-TLS%20%7C%20%40VlessConfig
+
+trojan://telegram-id-privatevpns@13.36.80.221:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20TCP-TLS%20%7C%20%40PrivateVPNs
+
+
+ss://YWVzLTI1Ni1nY206aHZCVlc5WXlHamhONjZLUE1BMEpTN3JubE55MTJ0ZkJKMUpPUjR6eTFnQT0%3D@92.114.51.173:443#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://3ea585f1-0208-49e7-9e94-3ff7634e045c@freak.gexar.top:30107?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://705f96ea-9a3f-9d89-4ed9-c1b8b6e802da@tunn.vpsino.com:2087?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://71fefc48-507a-42f3-b3b4-5bb533e79062@m4.v2speedy.com:57509?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://0945f741-d2cd-4e37-e235-021558deb307@farzandeiran.iransalar.top:41316?encryption=none&security=none&type=tcp&headerType=http&host=Fast.com#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://7bed5d53-f043-4fa4-f20b-32e7d1f5a052@p-2-0-2-turk.turkabr.ir:39792?encryption=none&security=none&type=tcp&headerType=http&host=snapp.ir#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://ec9ad2c4-0a26-4233-be07-b1d2176386ae@s1.fastsnap.info:29253?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
