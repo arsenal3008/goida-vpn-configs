@@ -1,13 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-
-
-vless://c558328b-eb46-424c-b9e0-574770f0b072@rtg.ae1autumn.cc.cd:80?encryption=none&security=none&sni=rtg.ae1autumn.cc.cd&fp=chrome&type=ws&host=rtg.ae1autumn.cc.cd&path=%2Fv8clafFSnPXNC0BXGtJ#%F0%9F%8C%90%20WS-None%20%7C%20%40ConfigX2ray
-
-vless://c558328b-eb46-424c-b9e0-574770f0b072@dvgt.zem.indevs.in:80?encryption=none&security=none&sni=dvgt.zem.indevs.in&type=ws&host=dvgt.zem.indevs.in&path=%2Fv8clafFSnPXNC0BXGtJ#%F0%9F%8C%90%20WS-None%20%7C%20%40ConfigX2ray
-
-vless://70696022-3905-4fb3-bdb5-c671b26ec355@185.44.114.249:443?encryption=none&type=kcp&headerType=none&security=none#%F0%9F%8C%90%20KCP-None%20%7C%20%40filembad
-
 trojan://telegram-id-directvpn@15.236.174.14:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40DirectVPN
 
 vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@15.236.174.14:22224?type=ws&security=tls&path=%2Ftelegram-channel-vlessconfig&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20WS-TLS%20%7C%20%40VlessConfig
@@ -15,6 +7,12 @@ vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@15.236.174.14:22224?type=ws&securit
 trojan://telegram-id-privatevpns@15.236.174.14:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%87%A8%F0%9F%87%B5%20TCP-TLS%20%7C%20%40PrivateVPNs
 
 vless://6175591d-3ed0-46e8-85b9-8e110a620bf1@prime.dissertationhelpspecialist.com:2053?type=grpc&encryption=none&serviceName=SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet-SevenNet&authority=&security=reality&pbk=mf8KAFdlE3Ze2v2_UJSh7LQjug-aiyV-IrTnlVBCCgM&fp=firefox&sni=tgju.org&sid=f6bf7084&spx=%2F#%F0%9F%8C%90%20GRPC-Reality%20%7C%20%40filembad
+
+
+
+vless://c558328b-eb46-424c-b9e0-574770f0b072@rtg.ae1autumn.cc.cd:80?encryption=none&security=none&sni=rtg.ae1autumn.cc.cd&fp=chrome&type=ws&host=rtg.ae1autumn.cc.cd&path=%2Fv8clafFSnPXNC0BXGtJ#%F0%9F%8C%90%20WS-None%20%7C%20%40VIPV2rayNGNP
+
+vless://c558328b-eb46-424c-b9e0-574770f0b072@dvgt.zem.indevs.in:80?encryption=none&security=none&sni=dvgt.zem.indevs.in&type=ws&host=dvgt.zem.indevs.in&path=%2Fv8clafFSnPXNC0BXGtJ#%F0%9F%8C%90%20WS-None%20%7C%20%40VIPV2rayNGNP
 
 vmess://eyJ2IjogIjIiLCAicHMiOiAiXHVkODNjXHVkZGY5XHVkODNjXHVkZGZjIFRDUC1Ob25lIHwgQHYybm9kZXMiLCAiYWRkIjogImNuMDIuMzY1Y2xvdWQ1ODc4LmNvbSIsICJwb3J0IjogIjYwMDIiLCAidHlwZSI6ICJub25lIiwgImlkIjogIjlmMWVjZmNhLTEzYTktNDg4ZC1hYzg0LWFhZWI3M2E4ZDU3NCIsICJhaWQiOiAiMCIsICJuZXQiOiAidGNwIiwgInBhdGgiOiAiLyIsICJob3N0IjogImNuMDIuMzY1Y2xvdWQ1ODc4LmNvbSIsICJ0bHMiOiAiIiwgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlfQ==
 
@@ -3249,3 +3247,7 @@ vless://6213e55c-789f-4cc9-83d3-5ee2d81e5ee7@1.9.reflecion.shop:1272?security=&e
 vless://3fe0dfe7-fb03-4b09-a963-975032f2c8f0@23.137.249.110:20365?type=tcp&encryption=none&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 vless://65964037-bec2-4fd7-b7c8-053047f48034@185.143.234.200:443?path=%2F%3Fed%3D443&security=tls&encryption=none&insecure=0&host=alef.ir.oadeflantrogm.airasiadl.com&fp=randomized&type=ws&allowInsecure=0&sni=alef.ir.oadeflantrogm.airasiadl.com#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
+vless://65964037-bec2-4fd7-b7c8-053047f48034@185.143.234.200:443?path=%2F%3Fed%3D443&security=tls&encryption=none&host=alef.ir.oadeflantrogm.airasiadl.com&fp=randomized&type=ws&sni=alef.ir.oadeflantrogm.airasiadl.com#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
+vmess://eyJ2IjogIjIiLCAicHMiOiAiXHVkODNjXHVkZjEwIFRDUC1Ob25lIHwgQGZpbGVtYmFkIiwgImFkZCI6ICI0NS4zOS4yNDEuNTEiLCAicG9ydCI6ICIzODU0MyIsICJpZCI6ICJmNTQ3NzhjYy1jZTI2LTRmOGQtOTIzZi1mOGU2MmIwOTBjZGUiLCAiYWlkIjogIjAiLCAic2N5IjogImF1dG8iLCAibmV0IjogInRjcCIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiJ9
