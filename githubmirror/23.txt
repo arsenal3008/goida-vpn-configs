@@ -69,3 +69,5 @@ vless://256c5f48-4908-4255-83d1-c86cb58f22b4@152.53.46.104:443?flow=xtls-rprx-vi
 vless://d057338f-0f7b-4245-80b3-6bcabd365b84@172.64.155.209:443?encryption=none&type=ws&security=tls&path=%2FeyJqdW5rIjoicVZMOXFIcEN4UkI2azNnIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ%3D%3D%3Fed%3D2560&host=edge26-topnet.topnet1127.workers.dev&fp=chrome&sni=edgE26-TOPnET.TopnEt1127.wOrkErs.DeV#🇨🇦 verified · t.me/XRayCheck
 vless://12d75b7d-8fdf-4785-8d62-d836854e7e63@172.64.155.209:2052?encryption=none&host=parking-nfchbwa1-v2.parking-1ab.workers.dev&path=/?ed&security=none&type=ws#🇨🇦 verified · t.me/XRayCheck
 hy2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@206.71.158.40:35000/?sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#🇳🇱 verified · t.me/XRayCheck
+vless://14e1775b-d92c-455b-8db3-e6c6d61909e0@172.67.172.86:80?encryption=none&host=vpnpro.eshghiabolfazl2009.workers.dev&path=%F0%9F%94%92&security=none&type=ws#🇨🇦 verified · t.me/XRayCheck
+hysteria2://hysteria2_fastlane_0yffaotug:d7ThQ59HqBVLuQ1LWQerTIe5V9cCdgLz@138.124.183.9:1935/?sni=us1.h.smartaisupport.ru#🇺🇸 verified · t.me/XRayCheck
