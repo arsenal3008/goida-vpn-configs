@@ -1,11 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-trojan://telegram-id-directvpn@18.195.58.45:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
-
-trojan://telegram-id-directvpn@15.236.3.3:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
-
-vless://906a03aa-ff96-4e71-9832-8f19c3f18a47@vid6.persiangame.sbs:55006?type=ws&path=/&security=none&host=rubika.ir#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
-
 vless://50390dae-1bdb-11f1-9350-92000723b4ab@dlc-new9.persianpinggame.com:5109?encryption=none&type=tcp&headerType=http&host=filmnet.ir&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 vless://6ee2c6e0-e4cf-4ff3-be5b-2d26c56779c4@2.188.241.144:29332?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
@@ -3692,3 +3686,13 @@ vless://5aae2234-d8c3-05fe-184d-48c4dacc5ba2@cloud.vpsino.com:48324?security=non
 vless://5aae2234-d8c3-05fe-184d-48c4dacc5ba2@cloud3.vpsino.com:6344?security=none&type=tcp&headerType=none&path=%2F#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 vless://16545df5-ccea-4802-a49c-afe878b26b46@dl.fastprofsor.com:58545?type=tcp&encryption=none&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://d2840316-b7ff-0e6e-2904-aed6dc4b4c03@cloud.vpsino.com:48324?security=none&type=tcp&headerType=none&path=%2F#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://3445138a-d30d-4b7b-ba80-0875c3b60d41@connected3.starpo3.ir:8080?security=&type=tcp&path=/&headerType=http&host=&encryption=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://fb098fc0-b41d-430d-9b92-49705687904e@shaparak.ultrrasound.com:19949?security=&encryption=none&host=telewebion.com&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://9de00ad9-17bc-46ed-b5bf-0bbd9991fcdf@de.jijibiji.icu:2050?security=none&encryption=none&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://90c9c25c-df6c-4438-83d3-ef97166a9184@85.209.159.22:443?security=reality&type=tcp&headerType=none&flow=xtls-rprx-vision&sni=5post-gate.x5.ru&fp=chrome&pbk=A3PWLCRX9oeSyPvrmrwj2jUXcLo2uCwAISRBHtNE1Xw&spx=/#%F0%9F%87%BA%F0%9F%87%B8%20TCP-Reality%20%7C%20%40v2nodes
