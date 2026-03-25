@@ -45,8 +45,8 @@ hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?security=t
 hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&type=hysteria&mport&security=tls&sni=api.kermanshahi.org&alpn=h3#🇩🇪 verified · t.me/XRayCheck
 hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?alpn=h3&sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#🇩🇪 verified · t.me/XRayCheck
 hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&sni=api.kermanshahi.org&insecure=0#🇩🇪 verified · t.me/XRayCheck
-hysteria2://8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9@22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com:443?security=tls&insecure=0&sni=22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com#🌐 verified · t.me/XRayCheck
-hysteria2://8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9@22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com:443?insecure=0&sni=22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com#🌐 verified · t.me/XRayCheck
+hysteria2://8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9@22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com:443?security=tls&insecure=0&sni=22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com#🇭🇰 verified · t.me/XRayCheck
+hysteria2://8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9@22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com:443?insecure=0&sni=22f48047-t6pb40-tasftf-duku.hk1.hyhuawei.com#🇭🇰 verified · t.me/XRayCheck
 hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?insecure=0&sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#🇩🇪 verified · t.me/XRayCheck
 hy2://ed665842-ef8e-41b4-925b-04e8ab546e82@aodaliya.iptk123.com:443#🇦🇺 verified · t.me/XRayCheck
 hy2://c8d187bb-1464-4407-a86b-c9fd5c777334@aodaliya.iptk123.com:443#🇦🇺 verified · t.me/XRayCheck
@@ -69,7 +69,7 @@ vless://ad63c9b2-ab96-4618-962e-3b8643a7f628@85.192.49.123:443?flow=xtls-rprx-vi
 vless://22620697-6fba-4b71-a348-0cef2f7bec1e@104.18.44.182:443?encryption=none&type=ws&host=do88.cmddo.ggff.net&path=%2F&security=tls&sni=do88.cmddo.ggff.net#🇨🇦 verified · t.me/XRayCheck
 vless://ad63c9b2-ab96-4618-962e-3b8643a7f628@85.192.49.123:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=qq&sni=drive.yandex.ru&pbk=a3_DLO6p_ZfPf7I0JFTVlAI2pPAPtC-ji2diyPcHcQA&sid=a8#🌐 verified · t.me/XRayCheck
 vless://ad63c9b2-ab96-4618-962e-3b8643a7f628@85.192.49.123:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=qq&sni=drive.yandex.ru&pbk=a3_DLO6p_ZfPf7I0JFTVlAI2pPAPtC-ji2diyPcHcQA&sid=b92f48e92d8ffa08#🌐 verified · t.me/XRayCheck
-vless://d7dbeb1e-268c-465c-8f59-489f14703efd@5.182.36.251:16331?security=reality&encryption=none&pbk=wYtc0dMr5fw5bBQkbLNpTqtu0m4B9NKnOyEWjRJUmzk&headerType=none&fp=chrome&spx=%2F%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%3Fed&type=tcp&sni=yahoo.com&sid=910aab#🇨🇭 verified · t.me/XRayCheck
+vless://d7dbeb1e-268c-465c-8f59-489f14703efd@5.182.36.251:16331?security=reality&encryption=none&pbk=wYtc0dMr5fw5bBQkbLNpTqtu0m4B9NKnOyEWjRJUmzk&headerType=none&fp=chrome&spx=%2F%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%40V2WRAY-%3Fed&type=tcp&sni=yahoo.com&sid=910aab#🌐 verified · t.me/XRayCheck
 vless://fb353c0a-153e-49b6-a109-43fa21d5758e@87.228.101.196:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=sso.passport.yandex.ru&pbk=pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U&sid=b2a6e3d42f05c3d1&spx=%2F#🌐 verified · t.me/XRayCheck
 vless://fb353c0a-153e-49b6-a109-43fa21d5758e@87.228.101.196:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=m.vk.com&pbk=pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U&sid=b2a6e3d42f05c3d1&spx=%2F#🌐 verified · t.me/XRayCheck
 vless://fb353c0a-153e-49b6-a109-43fa21d5758e@87.228.101.196:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=5post-gate.x5.ru&pbk=pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U&sid=b2a6e3d42f05c3d1&spx=%2F#🌐 verified · t.me/XRayCheck
@@ -84,3 +84,4 @@ vless://25f86cb1-2140-4085-abcb-c3a0ea7a4be0@OV-France1.09vpn.com:80?path=%2Fvle
 hy2://c8d187bb-1464-4407-a86b-c9fd5c777334@hanguo.iptk123.com:443#🇰🇷 verified · t.me/XRayCheck
 hysteria2://c8d187bb-1464-4407-a86b-c9fd5c777334@meiguo.iptk123.com:443#🇺🇸 verified · t.me/XRayCheck
 hy2://c8d187bb-1464-4407-a86b-c9fd5c777334@meiguo.iptk123.com:443#🇺🇸 verified · t.me/XRayCheck
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0T0xjaVcyc1FIVTJZQ0tQWkpQVklIQDQ2LjI0Ni45My4xMDc6MTIxMzg=#🌐 verified · t.me/XRayCheck
