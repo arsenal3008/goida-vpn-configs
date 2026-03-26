@@ -1,13 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-vless://bc4e22b2-ca71-4a48-a4f9-513817af6517@89.44.241.130:443?mode=auto&path=%2F&security=tls&encryption=none&host=kian.khorostime.ir&type=xhttp&sni=ir-cdn-dl-07.khorostime.ir#%F0%9F%8C%90%20XHTTP-TLS%20%7C%20%40filembad
-
-vless://ee73ff6e-af32-43df-854e-754253bd1bd8@de-2-tun-single.starping1.fun:8083?encryption=none&type=tcp&headerType=http&host=www.speedtest.net&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206MFF2TzVyMWZnNTdDcXl4L25XNTNNZz09OmgrNXhUK1pKY1ExbjBpNEJ2VjVDYmc9PQ%3D%3D@amir.amirport.sbs:2#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206MFF2TzVyMWZnNTdDcXl4L25XNTNNZz09OmgrNXhUK1pKY1ExbjBpNEJ2VjVDYmc9PQ@amir.amirport.sbs:2#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
 vless://189ea856-be5f-4950-a27b-abf5fa386831@77.83.245.135:34205?encryption=none&security=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 trojan://telegram-id-directvpn@13.37.186.179:22223?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=Trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
@@ -3934,3 +3926,17 @@ vless://36ee3f5a-3816-4c03-a324-47531167e53b@91.99.171.12:443?security=none&encr
 vless://2eaef053-5fd6-4def-b234-d760690355ff@91.99.80.183:51615?security=none&encryption=none&host=zula.ir%2F%3Ftelegram-%40MTMVPN&headerType=http&type=tcp#%F0%9F%87%A9%F0%9F%87%AA%20TCP-None%20%7C%20%40manVPN
 
 vmess://eyJ0eXBlIjogIm5vbmUiLCAic2VydmljZU5hbWUiOiAibm9uZSIsICJ2IjogIjIiLCAiYWlkIjogIjAiLCAiaG9zdCI6ICIiLCAicG9ydCI6ICIyMTUyIiwgImRldmljZUlEIjogIiIsICJleHRyYSI6ICIiLCAic25pIjogIiIsICJoZWFkZXJUeXBlIjogIm5vbmUiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIiwgInNlZWQiOiAiIiwgIm1vZGUiOiAiIiwgInRscyI6ICJub25lIiwgImZyYWdtZW50IjogIiIsICJuZXQiOiAidGNwIiwgImlkIjogImZmOTRmYzdiLTAzYTYtNGJhZS1iZDc0LWMyZWY1NDlmYmUwYSIsICJwcyI6ICJcdWQ4M2NcdWRmMTAgVENQLU5vbmUgfCBAc2FtaW5pc3RhbW0iLCAiYWRkIjogIjk0LjE4My4xNzAuMTAiLCAicGF0aCI6ICIifQ==
+
+vless://1555869a-44cf-4263-b84b-cf724c5629c1@packetnet.bache-molavi.sbs:57193?security=none&allowInsecure=0&encryption=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+trojan://o5ewksoq-y7i6-hi31-99mi-t9b2rgvlrwm0@127.0.0.1:1080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
+
+trojan://diogme5a-dzyn-8ucq-2tlq-kjcxyqcs605u@127.0.0.1:2080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
+
+trojan://o1mf5op5-47tz-g5c4-3wxm-6svvwzh9dj1y@127.0.0.1:4080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
+
+trojan://telegram-id-privatevpns@18.195.15.58:22222?sni=trojan.burgerip.co.uk&peer=trojan.burgerip.co.uk&security=tls#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
+
+trojan://telegram-id-privatevpns@52.47.165.179:22222?sni=trojan.burgerip.co.uk&peer=trojan.burgerip.co.uk&security=tls#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
+
+trojan://de7d6444-a7a8-4b3a-bf26-bc6939bb0279@n1.chateditimage.com:443?sni=n1.chateditimage.com&peer=n1.chateditimage.com&security=tls#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
