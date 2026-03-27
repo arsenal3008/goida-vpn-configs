@@ -1,12 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-trojan://86e150eb21c6faee48e81d496d7f61c2@43.207.232.176:921?allowInsecure=0&sni=www.nintendogames.net#%F0%9F%87%AD%F0%9F%87%B0%20TCP-TLS%20%7C%20%40v2nodes
-
-
-vless://0d9b67db-45a5-4953-a64f-a9299ad210d9@77.83.245.135:34205?encryption=none&security=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://b7cffc01-eab9-4659-b8d6-c5786295a731@185.211.59.104:8443?type=ws&encryption=none&path=%2F&host=&security=none#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
-
 vmess://eyJhZGQiOiAiMTAzLjIyNC44MC43IiwgImFpZCI6IDAsICJob3N0IjogIm1uMXJheS5qYWdvYW52aXAueHl6IiwgImlkIjogIjQ2MmQ5Njk0LTYyYjUtNDc4MS1hMjg3LTYxYTQyMmI5MjBlOCIsICJuZXQiOiAid3MiLCAicGF0aCI6ICIvdnZpcCIsICJwb3J0IjogMjA4NywgInBzIjogIlx1ZDgzY1x1ZGRlZVx1ZDgzY1x1ZGRlOSBXUy1UTFMgfCBAdjJub2RlcyIsICJzZWN1cml0eSI6ICJhdXRvIiwgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLCAic25pIjogIm1uMXJheS5qYWdvYW52aXAueHl6IiwgInRscyI6ICJ0bHMiLCAidHlwZSI6ICJhdXRvIn0=
 
 vless://80487a78-4fdd-4d7a-a355-5a7c6108ddaa@94.101.179.197:443?security=reality&encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=archive-azd1101.telewebion.ir&sid=6ba85179e30d4fc2#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
@@ -3958,3 +3951,10 @@ vless://7a240606-6e60-47f1-b8e3-a6310f92006c@151.101.193.57:80?encryption=none&s
 vless://5cb3a41e-fb5c-4d2d-836a-fa49192b19e1@151.101.193.57:80?encryption=none&security=none&type=xhttp&host=tignaltofan.global.ssl.fastly.net&path=%2FTignaliSWithYou&mode=auto#%F0%9F%8C%90%20XHTTP-None%20%7C%20%40filembad
 
 vless://6bf2c61f-db69-4e00-9dc5-249b83e69d73@srvfree.iranai.space:41314?security=&encryption=none&host=V2RRVIP&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://eef044ee-21f4-4a8a-80cb-0d2af3df34c3@dl.io-laptop.ir:8443?mode=auto&path=%3Fed%3D2048&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&host=dl.io-laptop.ir&fp=chrome&type=xhttp&allowInsecure=0&sni=dl.io-laptop.ir#%F0%9F%8C%90%20XHTTP-TLS%20%7C%20%40filembad
+
+vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@52.58.26.183:22224?type=ws&security=tls&path=%techbod#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
+vless://983da2df-bc52-4226-84c1-bbfef0704427@dqf21.sdssd1.sadqwdw1.carvan1.mimkiscx.ir:443?security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=beh1.salonemojallal.ir.#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
