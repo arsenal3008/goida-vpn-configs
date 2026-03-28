@@ -1,19 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-ss://YWVzLTI1Ni1nY206RU1JcnVGbDZuTjM3TERReENJd3N0RzA5aGFDQmt5anZaVmpXSU1PUTBKaz0@94.183.124.95:82#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://3104a981-857e-4e2d-8d58-86e06a33b7f5@109.122.201.62:14500?security=none&encryption=none&host=excoino.com&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://aece4c2f-bdc7-4cfd-9366-c57829b250aa@77.83.245.135:34205?encryption=none&security=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://0cff8f32-3a2a-1d63-529a-b2be7103900d@cloud.vpsino.com:48324?security=&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://c943c381-82a8-42ce-981d-71e0c76b8d83@185.143.233.235:443?path=%2Fwss&security=tls&alpn=http%2F1.1%2Ch2&encryption=none&insecure=0&host=p.configserver.ir&fp=chrome&type=ws&allowInsecure=0&sni=p.configserver.ir#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206bXRNa3ArMUZ0dGtTTG1ET0Y5YmxuTk1MaWdjQ1JhY3ByUVMzcnkwbmYzbz06NlllYkdSZWNkcUtvSW5SZjRpOFNacWxBZXZPVjEzVnROdytvTmVjcldQUT0=@hkt1.07c06051-81fd-4aa4-a94e-a0860315df8f.org:14999#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206bXRNa3ArMUZ0dGtTTG1ET0Y5YmxuTk1MaWdjQ1JhY3ByUVMzcnkwbmYzbz06NlllYkdSZWNkcUtvSW5SZjRpOFNacWxBZXZPVjEzVnROdytvTmVjcldQUT0@hkt1.07c06051-81fd-4aa4-a94e-a0860315df8f.org:14999#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
 vless://29884d7f-2d86-4842-8682-380cd361a86f@web.palmal.site:24776?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
 vless://bca11257-7caf-18ea-1bf4-43898bb59b8e@cloud3.vpsino.com:6344?security=none&type=tcp&headerType=none&path=%2F#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
@@ -389,6 +375,8 @@ trojan://telegram-id-privatevpns@15.237.55.242:22222?security=tls&alpn=http/1.1&
 vless://a63da9b8-137a-d5f1-74b4-ff2e8073b3f4@cloud3.vpsino.com:6344?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40prrofile_purple
 
 vless://a63da9b8-137a-d5f1-74b4-ff2e8073b3f4@cloud.vpsino.com:48324?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40prrofile_purple
+
+vless://3104a981-857e-4e2d-8d58-86e06a33b7f5@109.122.201.62:14500?security=none&encryption=none&host=excoino.com&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40prrofile_purple
 
 vless://3104a981-857e-4e2d-8d58-86e06a33b7f5@g1-de2-user.a1mshop.ir:14300?security=none&encryption=none&host=aparat.com&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40prrofile_purple
 
@@ -4057,3 +4045,11 @@ trojan://ea8rye87-yxln-fwg7-voje-1r9v6exbw0jl@127.0.0.1:2080?security=tls&type=t
 trojan://xo3nukxu-zxpo-ct4b-r469-9zulj2qzh2e7@127.0.0.1:4080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
 
 vmess://eyJ2IjoiMiIsInBzIjoiWFggXHVkODNjXHVkZmYzXHVmZTBmIFx1MjUwNyBWTUVTUy1XUy1UTFMgLSBDTE9VREZMQVJFTkVUIFx1MjUwNyAxNzIuNjcuMTk4LjE4NyIsImFkZCI6IjE3Mi42Ny4xOTguMTg3IiwicG9ydCI6NDQzLCJpZCI6IjkzZWE0ODZhLWJhZGEtNDJhNC1hYzM4LWQwODhiMzIwZmExZSIsImFpZCI6MCwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwiaG9zdCI6InhtaXZpZGVvLmNmZCIsInBhdGgiOiIvbGlua3dzIiwidGxzIjoidGxzIiwic25pIjoieG1pdmlkZW8uY2ZkIn0#%F0%9F%8C%90%20TCP-None%20%7C%20%40Trick_mobil
+
+vless://ae8c0e19-221e-4624-9ad5-dcf0220ce85a@188.213.197.35:443?security=reality&encryption=none&pbk=8yHuzZK-w0BKPDvvbKC5-bmMb5mTYCP300N30XGulzM&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=www.digikala.com&sid=768ef2dd2dd43b00#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
+
+vless://37888748-2254-4112-91fd-0586c27f4b40@185.239.0.199:8443?authority=&encryption=none&security=none&serviceName=&type=grpc#%F0%9F%8C%90%20GRPC-None%20%7C%20%40filembad
+
+vless://081efe27-f6b8-4f60-aedb-3c9effe9c67d@poe.com:443?path=%2F&security=tls&alpn=http%2F1.1&encryption=none&host=80bab3a2.gon-7ye.pages.dev&type=ws&sni=80bab3a2.gon-7ye.pages.dev#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
+vless://427fc44d-ae6c-48b0-ab80-c645699b38a5@vasl2.kaiserping.site:9096?flow=&type=tcp&headerType=http&host=telewebion.com,%20ua.yektanet.com&path=&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
