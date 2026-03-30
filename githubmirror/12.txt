@@ -1,34 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-vless://110d7bad-5e17-4ce3-afd0-2cf2ebc71787@94.131.8.31:2053?encryption=none&fp=chrome&pbk=aFsY-EZjSNTomlAFShKwQIQMJ5pHiZQXXJpWvcz8WkQ&security=reality&sid=0858af97f4e7324d&sni=music.yandex.ru&type=tcp#%F0%9F%87%AC%F0%9F%87%B7%20TCP-Reality%20%7C%20%40v2nodes
-
-vless://d70415c7-b3fb-43e9-915a-df66b2274c32@e2.aurorix.net:25930?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=iyV9M7K4Et9DgpzehijZ61ih3H1DnYCvjpSb-zC_qhk&sid=911451a18252bb5a&sni=www.microsoft.com#%F0%9F%87%A9%F0%9F%87%AA%20TCP-Reality%20%7C%20%40v2nodes
-
-
-vless://c43e53ef-def8-4d72-8b8e-d5703ea246af@pq-moldova1.09vpn.com:8443?path=/vless/&security=tls&encryption=none&type=ws#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vless://94c4de01-2fd4-4476-a8fa-ad5b78010e90@shoppanel.iran-rom.ir:1821?security=none&encryption=none&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://94c4de01-2fd4-4476-a8fa-ad5b78010e90@5.145.113.32:1821?security=none&encryption=none&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://6e2349d3-a727-4135-8000-c77eab3c4dff@s1.kingserver.org:2086?path=%2F&security=none&encryption=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
-
-vless://86e480ef-a128-42f9-8233-c9f93cf084d1@pq-romania1.09vpn.com:8443?path=/vless/&security=tls&encryption=none&type=ws#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vless://fa6bcfe7-fdf2-469a-92dc-a5c1ec6d9a2b@pq-moldova1.09vpn.com:8443?path=/vless/&security=tls&encryption=none&type=ws#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vless://2424febb-43cb-488d-bdd1-401e923c8e48@3h-kazakhstan1.09vpn.com:8443?path=/vless/&security=tls&encryption=none&type=ws#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vless://b78582f9-07f7-4b47-837c-3ef3e31cafee@185.226.117.223:8443?encryption=none&type=tcp&headerType=none&host=www.speedtest.net#%F0%9F%8C%90%20TCP-None%20%7C%20%40BrilliantGift
-
-vless://823762e9-9a03-47ad-87ba-2409027ce738@45.81.18.34:443?security=reality&encryption=none&pbk=ioufLXV7_DfXZ1oomDTaUMxdduFNWI-j4Ssa3QuME0Q&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=www.aparat.com&sid=bcf760#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40BrilliantGift
-
-vless://b78582f9-07f7-4b47-837c-3ef3e31cafee@185.226.117.223:8443?security=none&encryption=none&host=www.speedtest.net&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://6341758e-cb23-4b35-cb8d-018fdffad9aa@91.192.160.53:44919?path=%2F&security=&encryption=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
-
-ss://Y2hhY2hhMjAtcG9seTEzMDU6RTZUcEFTalc1Ymdwd1dsN2RzVWtzQVVr@107.189.7.176:37774?type=tcp&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
 vless://b28eb861-1748-4200-ba72-278669edc33b@104.16.109.107:80?path=%2F%3Fed%3D2560&security=none&encryption=none&host=coco.mahmoodchitooz.dpdns.org&fp=random&type=ws&sni=coco.mahmoodchitooz.dpdns.org#%F0%9F%87%BA%F0%9F%87%B8%20WS-None%20%7C%20%40manVPN
 
 vless://451d11a0-f87c-46ab-9fc3-cef78d642122@star.1conf.top:6?security=&encryption=none&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
@@ -2798,6 +2769,8 @@ vmess://eyJ2IjogIjIiLCAicHMiOiAiXHVkODNjXHVkZjEwIFRDUC1Ob25lIHwgQGZpbGVtYmFkIiwg
 
 vless://b3a1276f-e2a7-4661-a56b-61e74ece844e@blog3.gelatocabana.ir:443?encryption=none&security=none&type=tcp&headerType=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
+vless://94c4de01-2fd4-4476-a8fa-ad5b78010e90@shoppanel.iran-rom.ir:1821?encryption=none&security=none&type=tcp&headerType=http#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
 vless://19a2f623-0d64-4beb-87e8-61417082e65f@45.81.18.34:443?security=reality&encryption=none&pbk=ioufLXV7_DfXZ1oomDTaUMxdduFNWI-j4Ssa3QuME0Q&headerType=none&fp=chrome&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=www.aparat.com&sid=bcf760#%F0%9F%8C%90%20TCP-Reality%20%7C%20%40filembad
 
 vless://0379eebf-d715-4cc7-8840-e5ea3efa5873@irt1.digi-lander.ir:4440?security=&encryption=none&headerType=&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
@@ -4241,3 +4214,19 @@ vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@15.188.40.40:22224?path=/XIXVPN?ed=
 
 vless://7ce27a4e-10a6-459b-fd47-d078df5f22fe@104.17.187.102:2096?mode=gun&%3Bsecurity=tls&%3Bencryption=none&%3Btype=grpc&%3BserviceName=%28&path=/XIXVPN?ed=2560#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
+
+vless://c2c826d5-2d06-463d-8429-3481ab3dce3d@dl.ir.decentralvps.ir:2000?encryption=none&security=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+ss://YWVzLTEyOC1nY206SGU2QXJEVHlHZjJlPT0%3D@79.127.96.153:7662#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://00a53b45-9207-484e-a100-a0fb4ae559c3@217.60.243.101:29557?path=%2F%3Fed%3D2080&security=none&encryption=none&host=varzesh3.com&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://0e185d94-6477-4f47-a402-acc59aa4bab1@alinka.satarv.ir:80?security=none&allowInsecure=0&encryption=none&type=ws&path=/#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://0e185d94-6477-4f47-a402-acc59aa4bab1@alinka.satarv.ir:80?encryption=none&type=ws&path=/&security=none#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://09ff1044-2b05-4e76-a832-cacd570a5a69@im2.newdesigne.ir:80?encryption=none&host=&path=%2F&security=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp5S1ZNb0IzQXdpVEV6bnBub3EyRllS@193.47.60.186:28687#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vmess://eyJ2IjogIjIiLCAicHMiOiAiXHVkODNjXHVkZGZhXHVkODNjXHVkZGY4IFRDUC1Ob25lIHwgQHYybm9kZXMiLCAiYWRkIjogIjgyLjE5OC4yNDYuMjUwIiwgInBvcnQiOiAiMTgwIiwgInR5cGUiOiAibm9uZSIsICJpZCI6ICJkMTNmYzJmNS0zZTA1LTQ3OTUtODFlYi00NDE0M2EwOWU1NTIiLCAiYWlkIjogIjAiLCAibmV0IjogInRjcCIsICJwYXRoIjogIi8iLCAiaG9zdCI6ICIiLCAidGxzIjogIiIsICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZX0=
