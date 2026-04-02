@@ -89,7 +89,7 @@
 | 23 | [`23.txt`](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/23.txt) | [WhitePrime/xraycheck](https://raw.githubusercontent.com/WhitePrime/xraycheck/refs/heads/main/configs/available) | 12:46 | 02.04.2026 |
 | 24 | [`24.txt`](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/24.txt) | [Mr-Meshky/vify](https://github.com/Mr-Meshky/vify/raw/refs/heads/main/configs/vless.txt) | 12:57 | 02.04.2026 |
 | 25 | [`25.txt`](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/25.txt) | [V2RayRoot/V2RayConfig](https://raw.githubusercontent.com/V2RayRoot/V2RayConfig/refs/heads/main/Config/vless.txt) | 12:46 | 02.04.2026 |
-| 26 | [`26.txt`](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | [Обход SNI/CIDR белых списков](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | 12:57 | 02.04.2026 |
+| 26 | [`26.txt`](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | [Обход SNI/CIDR белых списков](https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | 13:00 | 02.04.2026 |
 
 ## 📊 Статистика репозитория
 | Показатель | Значение |
