@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v4 # Изменил на v4 по той же причине
         with:
           python-version: 3.x
 
@@ -40,6 +40,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: auto update [$(date -u +'%H:%M | %d.%m.%Y')]"
+            git commit -m "📝 Обновление по часовому поясу Европа/Москва: [$(TZ='Europe/Moscow' date +'%H:%M | %d.%m.%Y')]"
             git push
           fi
