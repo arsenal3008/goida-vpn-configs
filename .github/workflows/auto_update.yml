@@ -15,11 +15,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.MY_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: 3.x
+          python-version: "3.x"
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
@@ -27,19 +34,7 @@ jobs:
       - name: Install dependencies
         run: cd source && pip install --no-cache-dir -r requirements.txt
 
-      - name: Run script (local only)
+      - name: Run script
         env:
           MY_TOKEN: ${{ secrets.MY_TOKEN }}
-        run: cd source && python main.py --dry-run
-
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "📝 Обновление по часовому поясу Европа/Москва: [$(TZ='Europe/Moscow' date +'%H:%M | %d.%m.%Y')]"
-            git push
-          fi
+        run: cd source && python main.py

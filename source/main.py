@@ -1,11 +1,10 @@
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from collections import defaultdict
-from github import GithubException
-from github import Github, Auth
 from datetime import datetime
 import concurrent.futures
 import urllib.parse
+import subprocess
 import threading
 import zoneinfo
 import requests
@@ -16,13 +15,26 @@ import json
 import re
 import os
 
+# -------------------- КОРЕНЬ РЕПОЗИТОРИЯ --------------------
+try:
+    GIT_ROOT = subprocess.check_output(
+        ["git", "rev-parse", "--show-toplevel"],
+        stderr=subprocess.DEVNULL,
+    ).decode().strip()
+except Exception:
+    GIT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+GITHUBMIRROR_DIR = os.path.join(GIT_ROOT, "githubmirror")
+README_PATH = os.path.join(GIT_ROOT, "README.md")
+
 # -------------------- ЛОГИРОВАНИЕ --------------------
 LOGS_BY_FILE: dict[int, list[str]] = defaultdict(list)
 _LOG_LOCK = threading.Lock()
 _UPDATED_FILES_LOCK = threading.Lock()
 
 _GITHUBMIRROR_INDEX_RE = re.compile(r"githubmirror/(\d+)\.txt")
-updated_files = set()
+updated_files: set[int] = set()
+
 
 def _extract_index(msg: str) -> int:
     """Пытается извлечь номер файла из строки вида 'githubmirror/12.txt'."""
@@ -34,70 +46,76 @@ def _extract_index(msg: str) -> int:
             pass
     return 0
 
+
 def log(message: str):
     """Добавляет сообщение в общий словарь логов потокобезопасно."""
     idx = _extract_index(message)
     with _LOG_LOCK:
         LOGS_BY_FILE[idx].append(message)
 
-# Получение текущего времени по часовому поясу Европа/Москва
+
+# -------------------- ВРЕМЯ --------------------
 zone = zoneinfo.ZoneInfo("Europe/Moscow")
 thistime = datetime.now(zone)
 offset = thistime.strftime("%H:%M | %d.%m.%Y")
 
-# Получение GitHub токена из переменных окружения
+# -------------------- GITHUB API (только для статистики) --------------------
 GITHUB_TOKEN = os.environ.get("MY_TOKEN")
 REPO_NAME = "AvenCores/goida-vpn-configs"
 
+_repo_stats_client = None
+REPO = None
+
 if GITHUB_TOKEN:
-    g = Github(auth=Auth.Token(GITHUB_TOKEN))
+    try:
+        from github import Github, Auth
+        _repo_stats_client = Github(auth=Auth.Token(GITHUB_TOKEN))
+        REPO = _repo_stats_client.get_repo(REPO_NAME)
+        try:
+            remaining, limit = _repo_stats_client.rate_limiting
+            if remaining < 100:
+                log(f"⚠️ Внимание: осталось {remaining}/{limit} запросов к GitHub API")
+            else:
+                log(f"ℹ️ Доступно запросов к GitHub API: {remaining}/{limit}")
+        except Exception as e:
+            log(f"⚠️ Не удалось проверить лимиты GitHub API: {e}")
+    except ImportError:
+        log("⚠️ PyGithub не установлен — статистика репозитория недоступна")
 else:
-    g = Github()
+    log("⚠️ MY_TOKEN не задан — статистика репозитория недоступна")
 
-REPO = g.get_repo(REPO_NAME)
+os.makedirs(GITHUBMIRROR_DIR, exist_ok=True)
 
-# Проверка лимитов GitHub API
-try:
-    remaining, limit = g.rate_limiting
-    if remaining < 100:
-        log(f"⚠️ Внимание: осталось {remaining}/{limit} запросов к GitHub API")
-    else:
-        log(f"ℹ️ Доступно запросов к GitHub API: {remaining}/{limit}")
-except Exception as e:
-    log(f"⚠️ Не удалось проверить лимиты GitHub API: {e}")
-
-if not os.path.exists("githubmirror"):
-    os.mkdir("githubmirror")
-
+# -------------------- ИСТОЧНИКИ --------------------
 URLS = [
-    "https://github.com/sakha1370/OpenRay/raw/refs/heads/main/output/all_valid_proxies.txt", #1
-    "https://raw.githubusercontent.com/sevcator/5ubscrpt10n/main/protocols/vl.txt", #2
-    "https://raw.githubusercontent.com/yitong2333/proxy-minging/refs/heads/main/v2ray.txt", #3
-    "https://raw.githubusercontent.com/acymz/AutoVPN/refs/heads/main/data/V2.txt", #4
-    "https://raw.githubusercontent.com/miladtahanian/V2RayCFGDumper/refs/heads/main/sub.txt", #5
-    "https://raw.githubusercontent.com/roosterkid/openproxylist/main/V2RAY_RAW.txt", #6
-    "https://github.com/Epodonios/v2ray-configs/raw/main/Splitted-By-Protocol/trojan.txt", #7
-    "https://raw.githubusercontent.com/CidVpn/cid-vpn-config/refs/heads/main/general.txt", #8
-    "https://raw.githubusercontent.com/mohamadfg-dev/telegram-v2ray-configs-collector/refs/heads/main/category/vless.txt", #9
-    "https://raw.githubusercontent.com/mheidari98/.proxy/refs/heads/main/vless", #10
-    "https://raw.githubusercontent.com/youfoundamin/V2rayCollector/main/mixed_iran.txt", #11
-    "https://raw.githubusercontent.com/expressalaki/ExpressVPN/refs/heads/main/configs3.txt", #12
-    "https://raw.githubusercontent.com/MahsaNetConfigTopic/config/refs/heads/main/xray_final.txt", #13
-    "https://github.com/LalatinaHub/Mineral/raw/refs/heads/master/result/nodes", #14
-    "https://raw.githubusercontent.com/miladtahanian/Config-Collector/refs/heads/main/mixed_iran.txt", #15
-    "https://raw.githubusercontent.com/Pawdroid/Free-servers/refs/heads/main/sub", #16
-    "https://github.com/MhdiTaheri/V2rayCollector_Py/raw/refs/heads/main/sub/Mix/mix.txt", #17
-    "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt", #18
-    "https://github.com/MhdiTaheri/V2rayCollector/raw/refs/heads/main/sub/mix", #19
-    "https://github.com/Argh94/Proxy-List/raw/refs/heads/main/All_Config.txt", #20
-    "https://raw.githubusercontent.com/shabane/kamaji/master/hub/merged.txt", #21
-    "https://raw.githubusercontent.com/wuqb2i4f/xray-config-toolkit/main/output/base64/mix-uri", #22
-    "https://raw.githubusercontent.com/WhitePrime/xraycheck/refs/heads/main/configs/available", #23
-    "https://github.com/Mr-Meshky/vify/raw/refs/heads/main/configs/vless.txt", #24
-    "https://raw.githubusercontent.com/V2RayRoot/V2RayConfig/refs/heads/main/Config/vless.txt", #25
+    "https://github.com/sakha1370/OpenRay/raw/refs/heads/main/output/all_valid_proxies.txt",       # 1
+    "https://raw.githubusercontent.com/sevcator/5ubscrpt10n/main/protocols/vl.txt",                # 2
+    "https://raw.githubusercontent.com/yitong2333/proxy-minging/refs/heads/main/v2ray.txt",        # 3
+    "https://raw.githubusercontent.com/acymz/AutoVPN/refs/heads/main/data/V2.txt",                 # 4
+    "https://raw.githubusercontent.com/miladtahanian/V2RayCFGDumper/refs/heads/main/sub.txt",      # 5
+    "https://raw.githubusercontent.com/roosterkid/openproxylist/main/V2RAY_RAW.txt",               # 6
+    "https://github.com/Epodonios/v2ray-configs/raw/main/Splitted-By-Protocol/trojan.txt",         # 7
+    "https://raw.githubusercontent.com/CidVpn/cid-vpn-config/refs/heads/main/general.txt",        # 8
+    "https://raw.githubusercontent.com/mohamadfg-dev/telegram-v2ray-configs-collector/refs/heads/main/category/vless.txt", # 9
+    "https://raw.githubusercontent.com/mheidari98/.proxy/refs/heads/main/vless",                   # 10
+    "https://raw.githubusercontent.com/youfoundamin/V2rayCollector/main/mixed_iran.txt",           # 11
+    "https://raw.githubusercontent.com/expressalaki/ExpressVPN/refs/heads/main/configs3.txt",      # 12
+    "https://raw.githubusercontent.com/MahsaNetConfigTopic/config/refs/heads/main/xray_final.txt", # 13
+    "https://github.com/LalatinaHub/Mineral/raw/refs/heads/master/result/nodes",                   # 14
+    "https://raw.githubusercontent.com/miladtahanian/Config-Collector/refs/heads/main/mixed_iran.txt", # 15
+    "https://raw.githubusercontent.com/Pawdroid/Free-servers/refs/heads/main/sub",                 # 16
+    "https://github.com/MhdiTaheri/V2rayCollector_Py/raw/refs/heads/main/sub/Mix/mix.txt",         # 17
+    "https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt",                        # 18
+    "https://github.com/MhdiTaheri/V2rayCollector/raw/refs/heads/main/sub/mix",                    # 19
+    "https://github.com/Argh94/Proxy-List/raw/refs/heads/main/All_Config.txt",                     # 20
+    "https://raw.githubusercontent.com/shabane/kamaji/master/hub/merged.txt",                      # 21
+    "https://raw.githubusercontent.com/wuqb2i4f/xray-config-toolkit/main/output/base64/mix-uri",  # 22
+    "https://raw.githubusercontent.com/WhitePrime/xraycheck/refs/heads/main/configs/available",   # 23
+    "https://github.com/Mr-Meshky/vify/raw/refs/heads/main/configs/vless.txt",                     # 24
+    "https://raw.githubusercontent.com/V2RayRoot/V2RayConfig/refs/heads/main/Config/vless.txt",   # 25
 ]
 
-# Источники для 26-го файла (без SNI проверки, только дедупликация)
+# Источники для 26-го файла (без SNI-фильтрации, только дедупликация)
 EXTRA_URLS_FOR_26 = [
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-all.txt",
     "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-SNI-RU-all.txt",
@@ -107,20 +125,16 @@ EXTRA_URLS_FOR_26 = [
     "https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/2",
     "https://raw.githubusercontent.com/ByeWhiteLists/ByeWhiteLists2/refs/heads/main/ByeWhiteLists2.txt",
     "https://whiteprime.github.io/xraycheck/configs/white-list_available",
-    "https://wlrus.lol/confs/selected.txt"
+    "https://wlrus.lol/confs/selected.txt",
 ]
 
-# Best-effort fetch tuning for optional sources (26-й файл)
 EXTRA_URL_TIMEOUT = int(os.environ.get("EXTRA_URL_TIMEOUT", "6"))
 EXTRA_URL_MAX_ATTEMPTS = int(os.environ.get("EXTRA_URL_MAX_ATTEMPTS", "2"))
 
-REMOTE_PATHS = [f"githubmirror/{i+1}.txt" for i in range(len(URLS))]
-LOCAL_PATHS = [f"githubmirror/{i+1}.txt" for i in range(len(URLS))]
+LOCAL_PATHS = [os.path.join(GITHUBMIRROR_DIR, f"{i+1}.txt") for i in range(len(URLS))]
+LOCAL_PATHS.append(os.path.join(GITHUBMIRROR_DIR, "26.txt"))
 
-# Добавляем 26-й файл в пути
-REMOTE_PATHS.append("githubmirror/26.txt")
-LOCAL_PATHS.append("githubmirror/26.txt")
-
+# -------------------- HTTP-СЕССИЯ --------------------
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 CHROME_UA = (
@@ -130,6 +144,7 @@ CHROME_UA = (
 )
 
 DEFAULT_MAX_WORKERS = int(os.environ.get("MAX_WORKERS", "16"))
+
 
 def _build_session(max_pool_size: int) -> requests.Session:
     session = requests.Session()
@@ -148,7 +163,10 @@ def _build_session(max_pool_size: int) -> requests.Session:
     session.headers.update({"User-Agent": CHROME_UA})
     return session
 
-REQUESTS_SESSION = _build_session(max_pool_size=max(DEFAULT_MAX_WORKERS, len(URLS))) if 'URLS' in globals() else _build_session(DEFAULT_MAX_WORKERS)
+
+REQUESTS_SESSION = _build_session(max_pool_size=max(DEFAULT_MAX_WORKERS, len(URLS)))
+
+# -------------------- ПОЛУЧЕНИЕ ДАННЫХ --------------------
 
 def fetch_data(
     url: str,
@@ -158,6 +176,7 @@ def fetch_data(
     allow_http_downgrade: bool = True,
 ) -> str:
     sess = session or REQUESTS_SESSION
+    last_exc: Exception = RuntimeError("No attempts made")
     for attempt in range(1, max_attempts + 1):
         try:
             modified_url = url
@@ -179,7 +198,8 @@ def fetch_data(
             last_exc = exc
             if attempt < max_attempts:
                 continue
-            raise last_exc
+    raise last_exc
+
 
 def _format_fetch_error(exc: Exception) -> str:
     if isinstance(exc, requests.exceptions.ConnectTimeout):
@@ -192,324 +212,77 @@ def _format_fetch_error(exc: Exception) -> str:
         return "TLS error"
     if isinstance(exc, requests.exceptions.HTTPError):
         try:
-            status = exc.response.status_code
-            return f"HTTP {status}"
+            return f"HTTP {exc.response.status_code}"
         except Exception:
             return "HTTP error"
     if isinstance(exc, requests.exceptions.ConnectionError):
         return "Connection error"
     msg = str(exc)
-    if len(msg) > 160:
-        msg = msg[:160] + "…"
-    return msg
+    return msg[:160] + "…" if len(msg) > 160 else msg
 
-def save_to_local_file(path, content):
-    with open(path, "w", encoding="utf-8") as file:
-        file.write(content)
+# -------------------- ФИЛЬТРАЦИЯ --------------------
+
+INSECURE_PATTERN = re.compile(
+    r'(?:[?&;]|3%[Bb])(allowinsecure|allow_insecure|insecure)=(?:1|true|yes)(?:[&;#]|$|(?=\s|$))',
+    re.IGNORECASE,
+)
+
+
+def filter_insecure_configs(local_path: str, data: str, log_enabled: bool = True) -> tuple[str, int]:
+    result = []
+    splitted = data.splitlines()
+    for line in splitted:
+        processed = urllib.parse.unquote(html.unescape(line.strip()))
+        if not INSECURE_PATTERN.search(processed):
+            result.append(line)
+
+    filtered_count = len(splitted) - len(result)
+    if filtered_count > 0 and log_enabled:
+        log(f"ℹ️ Отфильтровано {filtered_count} небезопасных конфигов для {local_path}")
+    return "\n".join(result), filtered_count
+
+# -------------------- ЛОКАЛЬНЫЕ ФАЙЛЫ --------------------
+
+def save_to_local_file(path: str, content: str):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
     log(f"📁 Данные сохранены локально в {path}")
 
+
 def extract_source_name(url: str) -> str:
-    """Извлекает понятное имя источника из URL"""
+    """Извлекает понятное имя источника из URL."""
     try:
-        parsed = urllib.parse.urlparse(url)
-        path_parts = parsed.path.split('/')
-        if len(path_parts) > 2:
-            return f"{path_parts[1]}/{path_parts[2]}"
-        return parsed.netloc
-    except:
+        parts = urllib.parse.urlparse(url).path.split("/")
+        if len(parts) > 2:
+            return f"{parts[1]}/{parts[2]}"
+        return urllib.parse.urlparse(url).netloc
+    except Exception:
         return "Источник"
 
-def _traffic_counts(traffic) -> tuple[int, int]:
-    """Извлекает count/uniques из разных форматов ответа GitHub API."""
-    if traffic is None:
-        return 0, 0
 
-    # Формат: (count, uniques, <list>)
-    if isinstance(traffic, tuple) and len(traffic) >= 2:
-        if isinstance(traffic[0], (int, float)) and isinstance(traffic[1], (int, float)):
-            return int(traffic[0]), int(traffic[1])
-
-    # Формат: dict
-    if isinstance(traffic, dict):
-        if "count" in traffic or "uniques" in traffic:
-            return int(traffic.get("count", 0)), int(traffic.get("uniques", 0))
-        items = traffic.get("views") or traffic.get("clones") or []
-        return _sum_traffic_items(items)
-
-    # Формат: объект с полями count/uniques
-    if hasattr(traffic, "count") and hasattr(traffic, "uniques"):
-        return int(getattr(traffic, "count", 0) or 0), int(getattr(traffic, "uniques", 0) or 0)
-
-    # Формат: объект с views/clones
-    for attr in ("views", "clones"):
-        if hasattr(traffic, attr):
-            items = getattr(traffic, attr) or []
-            return _sum_traffic_items(items)
-
-    # Формат: raw_data
-    if hasattr(traffic, "raw_data"):
-        raw = getattr(traffic, "raw_data") or {}
-        if isinstance(raw, dict):
-            if "count" in raw or "uniques" in raw:
-                return int(raw.get("count", 0)), int(raw.get("uniques", 0))
-            items = raw.get("views") or raw.get("clones") or []
-            return _sum_traffic_items(items)
-
-    # Формат: список объектов
-    if isinstance(traffic, (list, tuple)):
-        return _sum_traffic_items(traffic)
-
-    return 0, 0
-
-def _sum_traffic_items(items) -> tuple[int, int]:
-    total_count = 0
-    total_uniques = 0
-    for item in items or []:
-        if isinstance(item, dict):
-            total_count += int(item.get("count", 0) or 0)
-            total_uniques += int(item.get("uniques", 0) or 0)
-            continue
-        if hasattr(item, "count"):
-            total_count += int(getattr(item, "count", 0) or 0)
-        if hasattr(item, "uniques"):
-            total_uniques += int(getattr(item, "uniques", 0) or 0)
-    return total_count, total_uniques
-
-def _get_repo_stats() -> dict | None:
-    """Получает статистику репозитория за 14 дней (просмотры/клоны)."""
-    stats: dict[str, int] = {}
-    try:
-        views = REPO.get_views_traffic()
-        views_count, views_uniques = _traffic_counts(views)
-        stats["views_count"] = views_count
-        stats["views_uniques"] = views_uniques
-    except Exception as e:
-        log(f"⚠️ Не удалось получить просмотры (traffic views): {e}")
-        return None
-
-    try:
-        clones = REPO.get_clones_traffic()
-        clones_count, clones_uniques = _traffic_counts(clones)
-        stats["clones_count"] = clones_count
-        stats["clones_uniques"] = clones_uniques
-    except Exception as e:
-        log(f"⚠️ Не удалось получить клоны (traffic clones): {e}")
-        return None
-
-    return stats
-
-def _build_repo_stats_table(stats: dict) -> str:
-    def _format_num(value) -> str:
-        try:
-            return f"{int(value):,}"
-        except Exception:
-            return str(value)
-
-    header = "| Показатель | Значение |\n|--|--|"
-    rows = [
-        f"| Просмотры (14Д) | {_format_num(stats['views_count'])} |",
-        f"| Клоны (14Д) | {_format_num(stats['clones_count'])} |",
-        f"| Уникальные клоны (14Д) | {_format_num(stats['clones_uniques'])} |",
-        f"| Уникальные посетители (14Д) | {_format_num(stats['views_uniques'])} |",
-    ]
-    return header + "\n" + "\n".join(rows)
-
-def _insert_repo_stats_section(content: str, stats_section: str) -> str:
-    pattern = r"(\| № \| Файл \| Источник \| Время \| Дата \|[\s\S]*?\|--\|--\|--\|--\|--\|[\s\S]*?\n)(?=\n## )"
-    match = re.search(pattern, content)
-    if not match:
-        return content.rstrip() + "\n\n" + stats_section + "\n"
-    return re.sub(pattern, lambda m: m.group(1) + "\n" + stats_section, content, count=1)
-
-def update_readme_table():
-    """Обновляет таблицы в README.md: статус конфигов и статистику репозитория"""
-    try:
-        # Получаем текущий README.md
-        try:
-            readme_file = REPO.get_contents("README.md")
-            old_content = readme_file.decoded_content.decode("utf-8")
-        except GithubException as e:
-            if e.status == 404:
-                log("❌ README.md не найден в репозитории")
-                return
-            else:
-                log(f"⚠️ Ошибка при получении README.md: {e}")
-                return
-
-        # Разделяем время и дату
-        time_part, date_part = offset.split(" | ")
-        
-        # Создаем новую таблицу
-        table_header = "| № | Файл | Источник | Время | Дата |\n|--|--|--|--|--|"
-        table_rows = []
-        
-        for i, (remote_path, url) in enumerate(zip(REMOTE_PATHS, URLS + [""]), 1):
-            filename = f"{i}.txt"
-            
-            # Формируем ссылку на raw-файл в репозитории
-            raw_file_url = f"https://github.com/{REPO_NAME}/raw/refs/heads/main/githubmirror/{i}.txt"
-            
-            if i <= 25:
-                source_name = extract_source_name(url)
-                source_column = f"[{source_name}]({url})"
-            else:
-                # Для 26-го файла создаем ссылку на сам файл с текстом "Обход SNI/CIDR белых списков"
-                source_name = "Обход SNI/CIDR белых списков"
-                source_column = f"[{source_name}]({raw_file_url})"
-            
-            # Проверяем, был ли файл обновлен в этом запуске
-            if i in updated_files:
-                update_time = time_part
-                update_date = date_part
-            else:
-                # Пытаемся найти время и дату из старой таблицы
-                pattern = rf"\|\s*{i}\s*\|\s*\[`{filename}`\].*?\|.*?\|\s*(.*?)\s*\|\s*(.*?)\s*\|"
-                match = re.search(pattern, old_content)
-                if match:
-                    update_time = match.group(1).strip() if match.group(1).strip() else "Никогда"
-                    update_date = match.group(2).strip() if match.group(2).strip() else "Никогда"
-                else:
-                    update_time = "Никогда"
-                    update_date = "Никогда"
-            
-            # Для всех файлов делаем ссылку на raw-файл в столбце "Файл"
-            table_rows.append(f"| {i} | [`{filename}`]({raw_file_url}) | {source_column} | {update_time} | {update_date} |")
-
-        new_table = table_header + "\n" + "\n".join(table_rows)
-
-        # Заменяем таблицу в README.md
-        table_pattern = r"\| № \| Файл \| Источник \| Время \| Дата \|[\s\S]*?\|--\|--\|--\|--\|--\|[\s\S]*?(\n\n## |$)"
-        new_content = re.sub(table_pattern, new_table + r"\1", old_content)
-
-        # Обновляем секцию статистики репозитория
-        repo_stats = _get_repo_stats()
-        if repo_stats:
-            stats_section = "## 📊 Статистика репозитория\n" + _build_repo_stats_table(repo_stats) + "\n"
-            stats_pattern = r"## 📊 Статистика репозитория\s*\n[\s\S]*?(?=\n## |\Z)"
-            if re.search(stats_pattern, new_content):
-                new_content = re.sub(stats_pattern, stats_section, new_content)
-            else:
-                new_content = _insert_repo_stats_section(new_content, stats_section)
-        else:
-            log("⚠️ Статистика репозитория недоступна, раздел не обновлён.")
-
-        if new_content != old_content:
-            REPO.update_file(
-                path="README.md",
-                message=f"📝 Обновление таблицы в README.md по часовому поясу Европа/Москва: {offset}",
-                content=new_content,
-                sha=readme_file.sha
-            )
-            log("📝 Таблица в README.md обновлена")
-        else:
-            log("📝 Таблица в README.md не требует изменений")
-
-    except Exception as e:
-        log(f"⚠️ Ошибка при обновлении README.md: {e}")
-
-def upload_to_github(local_path, remote_path):
-    if not os.path.exists(local_path):
-        log(f"❌ Файл {local_path} не найден.")
-        return
-
-    repo = REPO
-
-    with open(local_path, "r", encoding="utf-8") as file:
-        content = file.read()
-
-    max_retries = 5
-    import time
-
-    for attempt in range(1, max_retries + 1):
-        try:
-            try:
-                file_in_repo = repo.get_contents(remote_path)
-                current_sha = file_in_repo.sha
-            except GithubException as e_get:
-                if getattr(e_get, "status", None) == 404:
-                    basename = os.path.basename(remote_path)
-                    repo.create_file(
-                        path=remote_path,
-                        message=f"🆕 Первый коммит {basename} по часовому поясу Европа/Москва: {offset}",
-                        content=content,
-                    )
-                    log(f"🆕 Файл {remote_path} создан.")
-                    # Добавляем в обновленные файлы
-                    file_index = int(remote_path.split('/')[1].split('.')[0])
-                    with _UPDATED_FILES_LOCK:
-                        updated_files.add(file_index)
-                    return
-                else:
-                    msg = e_get.data.get("message", str(e_get))
-                    log(f"⚠️ Ошибка при получении {remote_path}: {msg}")
-                    return
-
-            try:
-                remote_content = file_in_repo.decoded_content.decode("utf-8", errors="replace")
-                if remote_content == content:
-                    log(f"🔄 Изменений для {remote_path} нет.")
-                    return
-            except Exception:
-                pass
-
-            basename = os.path.basename(remote_path)
-            try:
-                repo.update_file(
-                    path=remote_path,
-                    message=f"🚀 Обновление {basename} по часовому поясу Европа/Москва: {offset}",
-                    content=content,
-                    sha=current_sha,
-                )
-                log(f"🚀 Файл {remote_path} обновлён в репозитории.")
-                # Добавляем в обновленные файлы
-                file_index = int(remote_path.split('/')[1].split('.')[0])
-                with _UPDATED_FILES_LOCK:
-                    updated_files.add(file_index)
-                return
-            except GithubException as e_upd:
-                if getattr(e_upd, "status", None) == 409:
-                    if attempt < max_retries:
-                        wait_time = 0.5 * (2 ** (attempt - 1))
-                        log(f"⚠️ Конфликт SHA для {remote_path}, попытка {attempt}/{max_retries}, ждем {wait_time} сек")
-                        time.sleep(wait_time)
-                        continue
-                    else:
-                        log(f"❌ Не удалось обновить {remote_path} после {max_retries} попыток")
-                        return
-                else:
-                    msg = e_upd.data.get("message", str(e_upd))
-                    log(f"⚠️ Ошибка при загрузке {remote_path}: {msg}")
-                    return
-
-        except Exception as e_general:
-            short_msg = str(e_general)
-            if len(short_msg) > 200:
-                short_msg = short_msg[:200] + "…"
-            log(f"⚠️ Непредвиденная ошибка при обновлении {remote_path}: {short_msg}")
-            return
-
-    log(f"❌ Не удалось обновить {remote_path} после {max_retries} попыток")
-
-def download_and_save(idx):
+def download_and_save(idx: int) -> tuple[str, int] | None:
+    """Скачивает файл, фильтрует и сохраняет локально.
+    Возвращает (local_path, file_index) если файл изменился, иначе None."""
     url = URLS[idx]
     local_path = LOCAL_PATHS[idx]
+    file_index = idx + 1
     try:
         data = fetch_data(url)
-        # Распаковываем результат (data, _)
         data, _ = filter_insecure_configs(local_path, data)
 
         if os.path.exists(local_path):
             try:
-                with open(local_path, "r", encoding="utf-8") as f_old:
-                    old_data = f_old.read()
-                if old_data == data:
-                    log(f"🔄 Изменений для {local_path} нет (локально). Пропуск загрузки в GitHub.")
-                    return None
+                with open(local_path, "r", encoding="utf-8") as f:
+                    if f.read() == data:
+                        log(f"🔄 Изменений для githubmirror/{file_index}.txt нет.")
+                        return None
             except Exception:
                 pass
 
         save_to_local_file(local_path, data)
-        return local_path, REMOTE_PATHS[idx]
+        return local_path, file_index
+
     except Exception as e:
         short_msg = str(e)
         if len(short_msg) > 200:
@@ -517,36 +290,10 @@ def download_and_save(idx):
         log(f"⚠️ Ошибка при скачивании {url}: {short_msg}")
         return None
 
-INSECURE_PATTERN = re.compile(
-    r'(?:[?&;]|3%[Bb])(allowinsecure|allow_insecure|insecure)=(?:1|true|yes)(?:[&;#]|$|(?=\s|$))',
-    re.IGNORECASE
-)
+# -------------------- 26-й ФАЙЛ --------------------
 
-def filter_insecure_configs(local_path, data, log_enabled=True):
-    result = []
-    splitted = data.splitlines()
-
-    for line in splitted:
-        original_line = line
-        processed = line.strip()
-        processed = urllib.parse.unquote(html.unescape(processed))
-
-        if INSECURE_PATTERN.search(processed):
-            continue
-
-        result.append(original_line)
-
-    filtered_count = len(splitted) - len(result)
-    
-    # Логируем сразу только если это обычные файлы (1-25) и логирование включено
-    if filtered_count > 0 and log_enabled:
-        log(f"ℹ️ Отфильтровано {filtered_count} небезопасных конфигов для {local_path}")
-    
-    # Возвращаем и текст, и количество удаленных
-    return "\n".join(result), filtered_count
-
-def create_filtered_configs():
-    """Создает 26-й файл с конфигами для SNI/CIDR белых списков"""
+def create_filtered_configs() -> str:
+    """Создаёт 26-й файл: конфиги для SNI/CIDR белых списков."""
     sni_domains = [
         "00.img.avito.st", "01.img.avito.st", "02.img.avito.st", "03.img.avito.st",
         "04.img.avito.st", "05.img.avito.st", "06.img.avito.st", "07.img.avito.st",
@@ -743,80 +490,76 @@ def create_filtered_configs():
         "xn--80ajghhoc2aj1c8b.xn--p1ai", "ya.ru", "yabro-wbplugin.edadeal.yandex.ru",
         "yabs.yandex.ru", "yandex.com", "yandex.net", "yandex.ru", "yastatic.net", "yummy.drom.ru",
         "zen-yabro-morda.mediascope.mc.yandex.ru", "zen.yandex.com", "zen.yandex.net",
-        "zen.yandex.ru", "честныйзнак.рф"
+        "zen.yandex.ru", "честныйзнак.рф",
     ]
 
-    # 1. Оптимизация списка доменов
+    # Оптимизация: убираем домены, которые являются подстрокой уже добавленных
     sorted_domains = sorted(sni_domains, key=len)
-    optimized_domains = []
+    optimized_domains: list[str] = []
     for d in sorted_domains:
-        is_redundant = False
-        for existing in optimized_domains:
-            if existing in d:
-                is_redundant = True
-                break
-        if not is_redundant:
+        if not any(existing in d for existing in optimized_domains):
             optimized_domains.append(d)
 
     try:
-        pattern_str = r"(?:" + "|".join(re.escape(d) for d in optimized_domains) + r")"
-        sni_regex = re.compile(pattern_str)
+        sni_regex = re.compile(r"(?:" + "|".join(re.escape(d) for d in optimized_domains) + r")")
     except Exception as e:
         log(f"❌ Ошибка компиляции Regex: {e}")
-        return None
+        return os.path.join(GITHUBMIRROR_DIR, "26.txt")
 
-    # Вспомогательные функции внутри
-    def _extract_host_port(line: str):
-        if not line: return None
+    def _extract_host_port(line: str) -> tuple[str, str] | None:
+        if not line:
+            return None
         if line.startswith("vmess://"):
             try:
                 payload = line[8:]
                 rem = len(payload) % 4
-                if rem: payload += '=' * (4 - rem)
-                decoded = base64.b64decode(payload).decode('utf-8', errors='ignore')
-                if decoded.startswith('{'):
+                if rem:
+                    payload += "=" * (4 - rem)
+                decoded = base64.b64decode(payload).decode("utf-8", errors="ignore")
+                if decoded.startswith("{"):
                     j = json.loads(decoded)
-                    host = j.get('add') or j.get('host') or j.get('ip')
-                    port = j.get('port')
-                    if host and port: return str(host), str(port)
-            except Exception: pass
+                    host = j.get("add") or j.get("host") or j.get("ip")
+                    port = j.get("port")
+                    if host and port:
+                        return str(host), str(port)
+            except Exception:
+                pass
             return None
-        m = re.search(r'(?:@|//)([\w\.-]+):(\d{1,5})', line)
-        if m: return m.group(1), m.group(2)
-        return None
+        m = re.search(r"(?:@|//)([\w\.-]+):(\d{1,5})", line)
+        return (m.group(1), m.group(2)) if m else None
 
-    def _process_file_filtering(file_idx):
-        local_path = f"githubmirror/{file_idx}.txt"
-        filtered_lines = []
+    def _process_file_filtering(file_idx: int) -> list[str]:
+        local_path = os.path.join(GITHUBMIRROR_DIR, f"{file_idx}.txt")
         if not os.path.exists(local_path):
-            return filtered_lines
+            return []
         try:
-            with open(local_path, "r", encoding="utf-8") as file:
-                content = file.read()
-            content = re.sub(r'(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://', r'\n\1://', content)
-            lines = content.splitlines()
-            for line in lines:
-                line = line.strip()
-                if not line: continue
-                if sni_regex.search(line):
-                    filtered_lines.append(line)
+            with open(local_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            content = re.sub(
+                r"(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://",
+                r"\n\1://",
+                content,
+            )
+            return [
+                line.strip()
+                for line in content.splitlines()
+                if line.strip() and sni_regex.search(line.strip())
+            ]
         except Exception:
-            pass
-        return filtered_lines
+            return []
 
-    all_configs = []
+    all_configs: list[str] = []
 
-    # 2. Обработка файлов 1-25
-    max_workers = min(16, os.cpu_count() + 4)
+    max_workers = min(16, (os.cpu_count() or 1) + 4)
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = [executor.submit(_process_file_filtering, i) for i in range(1, 26)]
-        for future in concurrent.futures.as_completed(futures):
-            all_configs.extend(future.result())
+        for result in concurrent.futures.as_completed(
+            [executor.submit(_process_file_filtering, i) for i in range(1, 26)]
+        ):
+            all_configs.extend(result.result())
 
-    # 3. Загрузка доп. источников для 26-го файла + ПОДСЧЕТ УДАЛЕННЫХ
-    def _load_extra_configs(url):
+    def _load_extra_configs(url: str) -> tuple[list[str], int]:
         count_removed = 0
-        configs = []
+        configs: list[str] = []
         try:
             data = fetch_data(
                 url,
@@ -824,116 +567,306 @@ def create_filtered_configs():
                 max_attempts=EXTRA_URL_MAX_ATTEMPTS,
                 allow_http_downgrade=False,
             )
-            # Вызываем с log_enabled=False, но забираем count
-            data, count = filter_insecure_configs("githubmirror/26.txt", data, log_enabled=False)
-            count_removed = count
-            
-            data = re.sub(r'(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://', r'\n\1://', data)
-            lines = data.splitlines()
-            for line in lines:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    configs.append(line)
+            data, count_removed = filter_insecure_configs(
+                os.path.join(GITHUBMIRROR_DIR, "26.txt"), data, log_enabled=False
+            )
+            data = re.sub(
+                r"(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://",
+                r"\n\1://",
+                data,
+            )
+            configs = [
+                line.strip()
+                for line in data.splitlines()
+                if line.strip() and not line.startswith("#")
+            ]
         except Exception as e:
             log(f"⚠️ Ошибка при загрузке {url}: {_format_fetch_error(e)}")
-        
-        # Возвращаем конфиги и количество удаленных
         return configs, count_removed
-    
-    extra_configs = []
-    total_insecure_filtered_26 = 0 # Счетчик для 26-го файла
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=min(4, len(EXTRA_URLS_FOR_26))) as executor:
-        futures = [executor.submit(_load_extra_configs, url) for url in EXTRA_URLS_FOR_26]
-        for future in concurrent.futures.as_completed(futures):
+    total_insecure_filtered_26 = 0
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=min(4, len(EXTRA_URLS_FOR_26))
+    ) as executor:
+        for future in concurrent.futures.as_completed(
+            [executor.submit(_load_extra_configs, u) for u in EXTRA_URLS_FOR_26]
+        ):
             res_configs, res_count = future.result()
-            extra_configs.extend(res_configs)
-            total_insecure_filtered_26 += res_count # Суммируем
-    
-    # ЕДИНСТВЕННЫЙ ЛОГ ДЛЯ 26-го ФАЙЛА
+            all_configs.extend(res_configs)
+            total_insecure_filtered_26 += res_count
+
     if total_insecure_filtered_26 > 0:
         log(f"ℹ️  Отфильтровано {total_insecure_filtered_26} небезопасных конфигов для githubmirror/26.txt")
 
-    all_configs.extend(extra_configs)
-
     # Дедупликация
-    seen_full = set()
-    seen_hostport = set()
-    unique_configs = []
+    seen_full: set[str] = set()
+    seen_hostport: set[str] = set()
+    unique_configs: list[str] = []
 
     for cfg in all_configs:
         c = cfg.strip()
-        if not c or c in seen_full: continue
+        if not c or c in seen_full:
+            continue
         seen_full.add(c)
         hostport = _extract_host_port(c)
         if hostport:
             key = f"{hostport[0].lower()}:{hostport[1]}"
-            if key in seen_hostport: continue
+            if key in seen_hostport:
+                continue
             seen_hostport.add(key)
         unique_configs.append(c)
 
-    local_path_26 = "githubmirror/26.txt"
+    local_path_26 = os.path.join(GITHUBMIRROR_DIR, "26.txt")
     try:
-        with open(local_path_26, "w", encoding="utf-8") as file:
-            file.write("\n".join(unique_configs))
-        log(f"📁 Создан файл {local_path_26} с {len(unique_configs)} конфигами")
+        with open(local_path_26, "w", encoding="utf-8") as f:
+            f.write("\n".join(unique_configs))
+        log(f"📁 Создан файл githubmirror/26.txt с {len(unique_configs)} конфигами")
     except Exception as e:
-        log(f"⚠️ Ошибка при сохранении {local_path_26}: {e}")
+        log(f"⚠️ Ошибка при сохранении githubmirror/26.txt: {e}")
 
     return local_path_26
 
+# -------------------- СТАТИСТИКА РЕПОЗИТОРИЯ --------------------
+
+def _traffic_counts(traffic) -> tuple[int, int]:
+    if traffic is None:
+        return 0, 0
+    if isinstance(traffic, tuple) and len(traffic) >= 2:
+        if isinstance(traffic[0], (int, float)) and isinstance(traffic[1], (int, float)):
+            return int(traffic[0]), int(traffic[1])
+    if isinstance(traffic, dict):
+        if "count" in traffic or "uniques" in traffic:
+            return int(traffic.get("count", 0)), int(traffic.get("uniques", 0))
+        items = traffic.get("views") or traffic.get("clones") or []
+        return _sum_traffic_items(items)
+    if hasattr(traffic, "count") and hasattr(traffic, "uniques"):
+        return int(getattr(traffic, "count", 0) or 0), int(getattr(traffic, "uniques", 0) or 0)
+    for attr in ("views", "clones"):
+        if hasattr(traffic, attr):
+            return _sum_traffic_items(getattr(traffic, attr) or [])
+    if hasattr(traffic, "raw_data"):
+        raw = getattr(traffic, "raw_data") or {}
+        if isinstance(raw, dict):
+            if "count" in raw or "uniques" in raw:
+                return int(raw.get("count", 0)), int(raw.get("uniques", 0))
+            items = raw.get("views") or raw.get("clones") or []
+            return _sum_traffic_items(items)
+    if isinstance(traffic, (list, tuple)):
+        return _sum_traffic_items(traffic)
+    return 0, 0
+
+
+def _sum_traffic_items(items) -> tuple[int, int]:
+    total_count = total_uniques = 0
+    for item in items or []:
+        if isinstance(item, dict):
+            total_count += int(item.get("count", 0) or 0)
+            total_uniques += int(item.get("uniques", 0) or 0)
+        else:
+            total_count += int(getattr(item, "count", 0) or 0)
+            total_uniques += int(getattr(item, "uniques", 0) or 0)
+    return total_count, total_uniques
+
+
+def _get_repo_stats() -> dict | None:
+    if REPO is None:
+        return None
+    stats: dict[str, int] = {}
+    try:
+        views_count, views_uniques = _traffic_counts(REPO.get_views_traffic())
+        stats["views_count"] = views_count
+        stats["views_uniques"] = views_uniques
+    except Exception as e:
+        log(f"⚠️ Не удалось получить просмотры: {e}")
+        return None
+    try:
+        clones_count, clones_uniques = _traffic_counts(REPO.get_clones_traffic())
+        stats["clones_count"] = clones_count
+        stats["clones_uniques"] = clones_uniques
+    except Exception as e:
+        log(f"⚠️ Не удалось получить клоны: {e}")
+        return None
+    return stats
+
+
+def _build_repo_stats_table(stats: dict) -> str:
+    def _fmt(v) -> str:
+        try:
+            return f"{int(v):,}"
+        except Exception:
+            return str(v)
+
+    header = "| Показатель | Значение |\n|--|--|"
+    rows = [
+        f"| Просмотры (14Д) | {_fmt(stats['views_count'])} |",
+        f"| Клоны (14Д) | {_fmt(stats['clones_count'])} |",
+        f"| Уникальные клоны (14Д) | {_fmt(stats['clones_uniques'])} |",
+        f"| Уникальные посетители (14Д) | {_fmt(stats['views_uniques'])} |",
+    ]
+    return header + "\n" + "\n".join(rows)
+
+
+def _insert_repo_stats_section(content: str, stats_section: str) -> str:
+    pattern = r"(\| № \| Файл \| Источник \| Время \| Дата \|[\s\S]*?\|--\|--\|--\|--\|--\|[\s\S]*?\n)(?=\n## )"
+    match = re.search(pattern, content)
+    if not match:
+        return content.rstrip() + "\n\n" + stats_section + "\n"
+    return re.sub(pattern, lambda m: m.group(1) + "\n" + stats_section, content, count=1)
+
+# -------------------- README --------------------
+
+def update_readme_table():
+    """Обновляет таблицы в README.md локально."""
+    if not os.path.exists(README_PATH):
+        log("❌ README.md не найден")
+        return
+    try:
+        with open(README_PATH, "r", encoding="utf-8") as f:
+            old_content = f.read()
+    except Exception as e:
+        log(f"⚠️ Ошибка при чтении README.md: {e}")
+        return
+
+    time_part, date_part = offset.split(" | ")
+
+    table_header = "| № | Файл | Источник | Время | Дата |\n|--|--|--|--|--|"
+    table_rows: list[str] = []
+
+    all_urls_with_26 = URLS + [""]  # 26-й файл без внешнего URL
+    for i, url in enumerate(all_urls_with_26, start=1):
+        filename = f"{i}.txt"
+        raw_file_url = f"https://github.com/{REPO_NAME}/raw/refs/heads/main/githubmirror/{i}.txt"
+
+        if i <= 25:
+            source_name = extract_source_name(url)
+            source_column = f"[{source_name}]({url})"
+        else:
+            source_name = "Обход SNI/CIDR белых списков"
+            source_column = f"[{source_name}]({raw_file_url})"
+
+        if i in updated_files:
+            update_time, update_date = time_part, date_part
+        else:
+            pattern = rf"\|\s*{i}\s*\|\s*\[`{filename}`\].*?\|.*?\|\s*(.*?)\s*\|\s*(.*?)\s*\|"
+            match = re.search(pattern, old_content)
+            if match:
+                update_time = match.group(1).strip() or "Никогда"
+                update_date = match.group(2).strip() or "Никогда"
+            else:
+                update_time = update_date = "Никогда"
+
+        table_rows.append(
+            f"| {i} | [`{filename}`]({raw_file_url}) | {source_column} | {update_time} | {update_date} |"
+        )
+
+    new_table = table_header + "\n" + "\n".join(table_rows)
+
+    table_pattern = r"\| № \| Файл \| Источник \| Время \| Дата \|[\s\S]*?\|--\|--\|--\|--\|--\|[\s\S]*?(\n\n## |$)"
+    new_content = re.sub(table_pattern, new_table + r"\1", old_content)
+
+    repo_stats = _get_repo_stats()
+    if repo_stats:
+        stats_section = "## 📊 Статистика репозитория\n" + _build_repo_stats_table(repo_stats) + "\n"
+        stats_pattern = r"## 📊 Статистика репозитория\s*\n[\s\S]*?(?=\n## |\Z)"
+        if re.search(stats_pattern, new_content):
+            new_content = re.sub(stats_pattern, stats_section, new_content)
+        else:
+            new_content = _insert_repo_stats_section(new_content, stats_section)
+    else:
+        log("⚠️ Статистика репозитория недоступна, раздел не обновлён.")
+
+    if new_content == old_content:
+        log("📝 README.md не требует изменений")
+        return
+
+    try:
+        with open(README_PATH, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        log("📝 README.md обновлён")
+    except Exception as e:
+        log(f"⚠️ Ошибка при записи README.md: {e}")
+
+# -------------------- GIT --------------------
+
+def git_commit_and_push(dry_run: bool = False):
+    """Добавляет изменённые файлы в индекс, делает коммит и пушит."""
+    try:
+        subprocess.run(
+            ["git", "add",
+             os.path.relpath(GITHUBMIRROR_DIR, GIT_ROOT),
+             os.path.relpath(README_PATH, GIT_ROOT)],
+            check=True,
+            cwd=GIT_ROOT,
+        )
+
+        diff = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"],
+            cwd=GIT_ROOT,
+        )
+        if diff.returncode == 0:
+            log("ℹ️ Нет изменений для коммита")
+            return
+
+        subprocess.run(
+            ["git", "commit", "-m", f"🚀 Автообновление конфигов: {offset}"],
+            check=True,
+            cwd=GIT_ROOT,
+        )
+        log("✅ Коммит создан")
+
+        if dry_run:
+            log("ℹ️ Dry-run: push пропущен")
+            return
+
+        subprocess.run(["git", "push"], check=True, cwd=GIT_ROOT)
+        log("✅ Изменения запушены в репозиторий")
+
+    except subprocess.CalledProcessError as e:
+        log(f"❌ Ошибка git: {e}")
+
+# -------------------- MAIN --------------------
+
 def main(dry_run: bool = False):
     max_workers_download = min(DEFAULT_MAX_WORKERS, max(1, len(URLS)))
-    max_workers_upload = max(2, min(6, len(URLS)))
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers_download) as download_pool, \
-         concurrent.futures.ThreadPoolExecutor(max_workers=max_workers_upload) as upload_pool:
-
-        download_futures = [download_pool.submit(download_and_save, i) for i in range(len(URLS))]
-        upload_futures: list[concurrent.futures.Future] = []
-
-        for future in concurrent.futures.as_completed(download_futures):
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers_download) as pool:
+        futures = [pool.submit(download_and_save, i) for i in range(len(URLS))]
+        for future in concurrent.futures.as_completed(futures):
             result = future.result()
             if result:
-                local_path, remote_path = result
-                if dry_run:
-                    log(f"ℹ️ Dry-run: пропускаем загрузку {remote_path} (локальный путь {local_path})")
-                else:
-                    upload_futures.append(upload_pool.submit(upload_to_github, local_path, remote_path))
+                _, file_index = result
+                with _UPDATED_FILES_LOCK:
+                    updated_files.add(file_index)
 
-        for uf in concurrent.futures.as_completed(upload_futures):
-            _ = uf.result()
-
-    # Создаем 26-й файл с отфильтрованными конфигами
     local_path_26 = create_filtered_configs()
-    
-    # Загружаем 26-й файл в GitHub
-    if not dry_run:
-        upload_to_github(local_path_26, "githubmirror/26.txt")
+    # Определяем, изменился ли 26-й файл
+    if os.path.exists(local_path_26):
+        with _UPDATED_FILES_LOCK:
+            updated_files.add(26)
 
-    # Обновляем таблицы в README.md после всех загрузок
-    if not dry_run:
-        update_readme_table()
+    update_readme_table()
+    git_commit_and_push(dry_run=dry_run)
 
     # Вывод логов
-    ordered_keys = sorted(k for k in LOGS_BY_FILE.keys() if k != 0)
+    ordered_keys = sorted(k for k in LOGS_BY_FILE if k != 0)
     output_lines: list[str] = []
-
     for k in ordered_keys:
         output_lines.append(f"----- {k}.txt -----")
         output_lines.extend(LOGS_BY_FILE[k])
-
     if LOGS_BY_FILE.get(0):
         output_lines.append("----- Общие сообщения -----")
         output_lines.extend(LOGS_BY_FILE[0])
-
     print("\n".join(output_lines))
+
 
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Скачивание конфигов и загрузка в GitHub")
-    parser.add_argument("--dry-run", action="store_true", help="Только скачивать и сохранять локально, не загружать в GitHub")
+    parser = argparse.ArgumentParser(description="Скачивание конфигов и коммит в GitHub")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Сохранять файлы локально и делать коммит, но не пушить",
+    )
     args = parser.parse_args()
-
     main(dry_run=args.dry_run)
