@@ -808,7 +808,7 @@ def git_commit_and_push(dry_run: bool = False):
             return
 
         subprocess.run(
-            ["git", "commit", "-m", f"🚀 Автообновление конфигов: {offset}"],
+            ["git", "commit", "-m", f"🚀 Автообновление репозитория: {offset}"],
             check=True,
             cwd=GIT_ROOT,
         )
@@ -862,7 +862,7 @@ def main(dry_run: bool = False):
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Скачивание конфигов и коммит в GitHub")
+    parser = argparse.ArgumentParser(description="Скачивание репозитория и коммит в GitHub")
     parser.add_argument(
         "--dry-run",
         action="store_true",
