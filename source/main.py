@@ -2,7 +2,8 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from collections import defaultdict
 from github import GithubException
-from github import Github, Auth, GitAuthor
+from github import Github, Auth
+from github.GitAuthor import GitAuthor
 from datetime import datetime
 import concurrent.futures
 import urllib.parse
