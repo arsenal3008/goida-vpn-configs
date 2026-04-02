@@ -398,9 +398,7 @@ def update_readme_table():
                 path="README.md",
                 message=f"📝 Обновление таблицы в README.md по часовому поясу Европа/Москва: {offset}",
                 content=new_content,
-                sha=readme_file.sha,
-                committer={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"},
-                author={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"}
+                sha=readme_file.sha
             )
             log("📝 Таблица в README.md обновлена")
         else:
@@ -434,8 +432,6 @@ def upload_to_github(local_path, remote_path):
                         path=remote_path,
                         message=f"🆕 Первый коммит {basename} по часовому поясу Европа/Москва: {offset}",
                         content=content,
-                        committer={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"},
-                        author={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"}
                     )
                     log(f"🆕 Файл {remote_path} создан.")
                     # Добавляем в обновленные файлы
@@ -463,8 +459,6 @@ def upload_to_github(local_path, remote_path):
                     message=f"🚀 Обновление {basename} по часовому поясу Европа/Москва: {offset}",
                     content=content,
                     sha=current_sha,
-                    committer={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"},
-                    author={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"}
                 )
                 log(f"🚀 Файл {remote_path} обновлён в репозитории.")
                 # Добавляем в обновленные файлы
