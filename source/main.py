@@ -3,7 +3,6 @@ from urllib3.util.retry import Retry
 from collections import defaultdict
 from github import GithubException
 from github import Github, Auth
-from github.GitAuthor import GitAuthor
 from datetime import datetime
 import concurrent.futures
 import urllib.parse
@@ -400,8 +399,8 @@ def update_readme_table():
                 message=f"📝 Обновление таблицы в README.md по часовому поясу Европа/Москва: {offset}",
                 content=new_content,
                 sha=readme_file.sha,
-                committer=GitAuthor("github-actions[bot]", "github-actions[bot]@users.noreply.github.com"),
-                author=GitAuthor("github-actions[bot]", "github-actions[bot]@users.noreply.github.com")
+                committer={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"},
+                author={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"}
             )
             log("📝 Таблица в README.md обновлена")
         else:
@@ -435,8 +434,8 @@ def upload_to_github(local_path, remote_path):
                         path=remote_path,
                         message=f"🆕 Первый коммит {basename} по часовому поясу Европа/Москва: {offset}",
                         content=content,
-                        committer=GitAuthor("github-actions[bot]", "github-actions[bot]@users.noreply.github.com"),
-                        author=GitAuthor("github-actions[bot]", "github-actions[bot]@users.noreply.github.com")
+                        committer={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"},
+                        author={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"}
                     )
                     log(f"🆕 Файл {remote_path} создан.")
                     # Добавляем в обновленные файлы
@@ -464,8 +463,8 @@ def upload_to_github(local_path, remote_path):
                     message=f"🚀 Обновление {basename} по часовому поясу Европа/Москва: {offset}",
                     content=content,
                     sha=current_sha,
-                    committer=GitAuthor("github-actions[bot]", "github-actions[bot]@users.noreply.github.com"),
-                    author=GitAuthor("github-actions[bot]", "github-actions[bot]@users.noreply.github.com")
+                    committer={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"},
+                    author={"name": "github-actions[bot]", "email": "github-actions[bot]@users.noreply.github.com"}
                 )
                 log(f"🚀 Файл {remote_path} обновлён в репозитории.")
                 # Добавляем в обновленные файлы
