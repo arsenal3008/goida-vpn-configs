@@ -32,12 +32,12 @@ LOGS_BY_FILE: dict[int, list[str]] = defaultdict(list)
 _LOG_LOCK = threading.Lock()
 _UPDATED_FILES_LOCK = threading.Lock()
 
-_GITHUBMIRROR_INDEX_RE = re.compile(r"githubmirror/(\d+)\.txt")
+_GITHUBMIRROR_INDEX_RE = re.compile(r"(?:githubmirror/)?(\d+)\.txt")
 updated_files: set[int] = set()
 
 
 def _extract_index(msg: str) -> int:
-    """Пытается извлечь номер файла из строки вида 'githubmirror/12.txt'."""
+    """Пытается извлечь номер файла из строки вида '19.txt' или 'githubmirror/12.txt'."""
     m = _GITHUBMIRROR_INDEX_RE.search(msg)
     if m:
         try:
@@ -238,7 +238,7 @@ def filter_insecure_configs(local_path: str, data: str, log_enabled: bool = True
 
     filtered_count = len(splitted) - len(result)
     if filtered_count > 0 and log_enabled:
-        log(f"ℹ️ Отфильтровано {filtered_count} небезопасных конфигов для {local_path}")
+        log(f"ℹ️ Отфильтровано {filtered_count} небезопасных конфигов для {os.path.basename(local_path)}")
     return "\n".join(result), filtered_count
 
 # -------------------- ЛОКАЛЬНЫЕ ФАЙЛЫ --------------------
@@ -247,7 +247,7 @@ def save_to_local_file(path: str, content: str):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
-    log(f"📁 Данные сохранены локально в {path}")
+    log(f"📁 Данные сохранены локально в {os.path.basename(path)}")
 
 
 def extract_source_name(url: str) -> str:
@@ -275,7 +275,7 @@ def download_and_save(idx: int) -> tuple[str, int] | None:
             try:
                 with open(local_path, "r", encoding="utf-8") as f:
                     if f.read() == data:
-                        log(f"🔄 Изменений для githubmirror/{file_index}.txt нет.")
+                        log(f"🔄 Изменений для {file_index}.txt нет.")
                         return None
             except Exception:
                 pass
@@ -596,7 +596,7 @@ def create_filtered_configs() -> str:
             total_insecure_filtered_26 += res_count
 
     if total_insecure_filtered_26 > 0:
-        log(f"ℹ️  Отфильтровано {total_insecure_filtered_26} небезопасных конфигов для githubmirror/26.txt")
+        log(f"ℹ️ Отфильтровано {total_insecure_filtered_26} небезопасных конфигов для 26.txt")
 
     # Дедупликация
     seen_full: set[str] = set()
@@ -620,9 +620,9 @@ def create_filtered_configs() -> str:
     try:
         with open(local_path_26, "w", encoding="utf-8") as f:
             f.write("\n".join(unique_configs))
-        log(f"📁 Создан файл githubmirror/26.txt с {len(unique_configs)} конфигами")
+        log(f"📁 Создан файл 26.txt с {len(unique_configs)} конфигами")
     except Exception as e:
-        log(f"⚠️ Ошибка при сохранении githubmirror/26.txt: {e}")
+        log(f"⚠️ Ошибка при сохранении 26.txt: {e}")
 
     return local_path_26
 
