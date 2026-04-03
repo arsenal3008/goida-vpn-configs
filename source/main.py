@@ -721,25 +721,23 @@ def fetch_latest_release_links() -> dict[str, str]:
 
     try:
         # v2rayNG
-        print("Получение v2rayNG...")
+        log("🔍 Получение v2rayNG...")
         response = requests.get('https://api.github.com/repos/2dust/v2rayNG/releases/latest', timeout=10)
-        print(f"v2rayNG ответ: {response.status_code}")
         if response.status_code == 200:
             releases = response.json()
             apk = next((a for a in releases.get('assets', []) if 'universal.apk' in a['name']), None)
             if apk:
                 links['v2rayng-apk'] = apk['browser_download_url']
-                print(f"v2rayNG ссылка: {links['v2rayng-apk']}")
+                log(f"✅ v2rayNG: {os.path.basename(apk['browser_download_url'])}")
         else:
-            print(f"Ошибка GitHub API для v2rayNG: {response.status_code}")
+            log(f"⚠️ Ошибка GitHub API для v2rayNG: {response.status_code}")
     except Exception as e:
-        print(f"Ошибка при получении v2rayNG: {e}")
+        log(f"❌ Ошибка при получении v2rayNG: {e}")
 
     try:
         # Throne
-        print("Получение Throne...")
+        log("🔍 Получение Throne...")
         response = requests.get('https://api.github.com/repos/throneproj/Throne/releases/latest', timeout=10)
-        print(f"Throne ответ: {response.status_code}")
         if response.status_code == 200:
             releases = response.json()
             throne_win10 = next((a for a in releases.get('assets', []) if 'windows64' in a['name'] and 'legacy' not in a['name']), None)
@@ -748,17 +746,17 @@ def fetch_latest_release_links() -> dict[str, str]:
 
             if throne_win10:
                 links['throne-win10'] = throne_win10['browser_download_url']
-                print(f"Throne Win10 ссылка: {links['throne-win10']}")
+                log(f"✅ Throne Win10/11: {os.path.basename(throne_win10['browser_download_url'])}")
             if throne_win7:
                 links['throne-win7'] = throne_win7['browser_download_url']
-                print(f"Throne Win7 ссылка: {links['throne-win7']}")
+                log(f"✅ Throne Win7/8/8.1: {os.path.basename(throne_win7['browser_download_url'])}")
             if throne_linux:
                 links['throne-linux'] = throne_linux['browser_download_url']
-                print(f"Throne Linux ссылка: {links['throne-linux']}")
+                log(f"✅ Throne Linux: {os.path.basename(throne_linux['browser_download_url'])}")
         else:
-            print(f"Ошибка GitHub API для Throne: {response.status_code}")
+            log(f"⚠️ Ошибка GitHub API для Throne: {response.status_code}")
     except Exception as e:
-        print(f"Ошибка при получении Throne: {e}")
+        log(f"❌ Ошибка при получении Throne: {e}")
 
     return links
 
