@@ -713,6 +713,114 @@ def _insert_repo_stats_section(content: str, stats_section: str) -> str:
         return content.rstrip() + "\n\n" + stats_section + "\n"
     return re.sub(pattern, lambda m: m.group(1) + "\n" + stats_section, content, count=1)
 
+# -------------------- ССЫЛКИ НА СКАЧИВАНИЕ --------------------
+
+def fetch_latest_release_links() -> dict[str, str]:
+    """Получает свежие ссылки на v2rayNG и Throne с GitHub API."""
+    links: dict[str, str] = {}
+
+    try:
+        # v2rayNG
+        print("Получение v2rayNG...")
+        response = requests.get('https://api.github.com/repos/2dust/v2rayNG/releases/latest', timeout=10)
+        print(f"v2rayNG ответ: {response.status_code}")
+        if response.status_code == 200:
+            releases = response.json()
+            apk = next((a for a in releases.get('assets', []) if 'universal.apk' in a['name']), None)
+            if apk:
+                links['v2rayng-apk'] = apk['browser_download_url']
+                print(f"v2rayNG ссылка: {links['v2rayng-apk']}")
+        else:
+            print(f"Ошибка GitHub API для v2rayNG: {response.status_code}")
+    except Exception as e:
+        print(f"Ошибка при получении v2rayNG: {e}")
+
+    try:
+        # Throne
+        print("Получение Throne...")
+        response = requests.get('https://api.github.com/repos/throneproj/Throne/releases/latest', timeout=10)
+        print(f"Throne ответ: {response.status_code}")
+        if response.status_code == 200:
+            releases = response.json()
+            throne_win10 = next((a for a in releases.get('assets', []) if 'windows64' in a['name'] and 'legacy' not in a['name']), None)
+            throne_win7 = next((a for a in releases.get('assets', []) if 'windowslegacy64' in a['name']), None)
+            throne_linux = next((a for a in releases.get('assets', []) if 'linux-amd64' in a['name']), None)
+
+            if throne_win10:
+                links['throne-win10'] = throne_win10['browser_download_url']
+                print(f"Throne Win10 ссылка: {links['throne-win10']}")
+            if throne_win7:
+                links['throne-win7'] = throne_win7['browser_download_url']
+                print(f"Throne Win7 ссылка: {links['throne-win7']}")
+            if throne_linux:
+                links['throne-linux'] = throne_linux['browser_download_url']
+                print(f"Throne Linux ссылка: {links['throne-linux']}")
+        else:
+            print(f"Ошибка GitHub API для Throne: {response.status_code}")
+    except Exception as e:
+        print(f"Ошибка при получении Throne: {e}")
+
+    return links
+
+
+def update_readme_download_links(links: dict[str, str]):
+    """Обновляет ссылки на скачивание v2rayNG и Throne в README.md."""
+    if not links:
+        log("⚠️ Нет новых ссылок для обновления в README.md")
+        return
+
+    if not os.path.exists(README_PATH):
+        log("❌ README.md не найден")
+        return
+
+    try:
+        with open(README_PATH, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception as e:
+        log(f"⚠️ Ошибка при чтении README.md: {e}")
+        return
+
+    original_content = content
+
+    # Обновляем ссылку на v2rayNG APK
+    if 'v2rayng-apk' in links:
+        # Паттерн для поиска ссылки на v2rayNG APK в формате: [Ссылка](https://github.com/.../v2rayNG_..._universal.apk)
+        v2rayng_pattern = r'(\*\*1\.\*\* Скачиваем \*\*«v2rayNG»\*.*?\[Ссылка\]\()https://github\.com/2dust/v2rayNG/releases/download/[^)]+(\))'
+        if re.search(v2rayng_pattern, content):
+            content = re.sub(v2rayng_pattern, rf'\1{links["v2rayng-apk"]}\2', content)
+            log(f"✅ Ссылка на v2rayNG обновлена в README.md")
+        else:
+            log("⚠️ Не найдена ссылка на v2rayNG в README.md")
+
+    # Обновляем ссылки на Throne
+    if 'throne-win10' in links:
+        throne_pattern = r'(\[Windows 10/11\]\()https://github\.com/throneproj/Throne/releases/download/[^)]+(\))'
+        if re.search(throne_pattern, content):
+            content = re.sub(throne_pattern, rf'\1{links["throne-win10"]}\2', content)
+            log(f"✅ Ссылка на Throne Win10/11 обновлена в README.md")
+
+    if 'throne-win7' in links:
+        throne_win7_pattern = r'(\[Windows 7/8/8\.1\]\()https://github\.com/throneproj/Throne/releases/download/[^)]+(\))'
+        if re.search(throne_win7_pattern, content):
+            content = re.sub(throne_win7_pattern, rf'\1{links["throne-win7"]}\2', content)
+            log(f"✅ Ссылка на Throne Win7/8/8.1 обновлена в README.md")
+
+    if 'throne-linux' in links:
+        throne_linux_pattern = r'(\[Linux\]\()https://github\.com/throneproj/Throne/releases/download/[^)]+(\))'
+        if re.search(throne_linux_pattern, content):
+            content = re.sub(throne_linux_pattern, rf'\1{links["throne-linux"]}\2', content)
+            log(f"✅ Ссылка на Throne Linux обновлена в README.md")
+
+    if content != original_content:
+        try:
+            with open(README_PATH, "w", encoding="utf-8") as f:
+                f.write(content)
+            log("📝 Ссылки на скачивание в README.md обновлены")
+        except Exception as e:
+            log(f"⚠️ Ошибка при записи README.md: {e}")
+    else:
+        log("ℹ️ Ссылки на скачивание не требуют изменений")
+
 # -------------------- README --------------------
 
 def update_readme_table():
@@ -843,6 +951,10 @@ def main(dry_run: bool = False):
     if os.path.exists(local_path_26):
         with _UPDATED_FILES_LOCK:
             updated_files.add(26)
+
+    # Обновляем ссылки на скачивание v2rayNG и Throne
+    release_links = fetch_latest_release_links()
+    update_readme_download_links(release_links)
 
     update_readme_table()
     git_commit_and_push(dry_run=dry_run)
