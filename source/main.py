@@ -715,6 +715,32 @@ def _insert_repo_stats_section(content: str, stats_section: str) -> str:
 
 # -------------------- ССЫЛКИ НА СКАЧИВАНИЕ --------------------
 
+def fetch_vc_runtime_link() -> str | None:
+    """Получить актуальную ссылку на Visual C++ Runtimes с comss.ru"""
+    url = 'https://www.comss.ru/download/page.php?id=6271'
+    
+    try:
+        log("🔍 Получение ссылки на Visual C++ Runtimes...")
+        response = requests.get(url, timeout=15)
+        response.raise_for_status()
+        
+        # Ищем ссылку на скачивание через regex (без BeautifulSoup для минимизации зависимостей)
+        # Ищем URL в формате https://dl.comss.org/download/Visual-C-Runtimes...
+        matches = re.findall(r'https://dl\.comss\.org/download/Visual-C-Runtimes[^\s\'"<>]+', response.text)
+        
+        if matches:
+            download_link = matches[0]
+            log(f"✅ Visual C++ Runtimes: {os.path.basename(download_link)}")
+            return download_link
+        else:
+            log("⚠️ Не удалось найти ссылку на Visual C++ Runtimes")
+            return None
+            
+    except Exception as e:
+        log(f"❌ Ошибка при получении Visual C++ Runtimes: {e}")
+        return None
+
+
 def fetch_latest_release_links() -> dict[str, str]:
     """Получает свежие ссылки на v2rayNG и Throne с GitHub API."""
     links: dict[str, str] = {}
@@ -761,9 +787,9 @@ def fetch_latest_release_links() -> dict[str, str]:
     return links
 
 
-def update_readme_download_links(links: dict[str, str]):
-    """Обновляет ссылки на скачивание v2rayNG и Throne в README.md."""
-    if not links:
+def update_readme_download_links(links: dict[str, str], vc_runtime_link: str | None = None):
+    """Обновляет ссылки на скачивание v2rayNG, Throne и Visual C++ Runtimes в README.md."""
+    if not links and not vc_runtime_link:
         log("⚠️ Нет новых ссылок для обновления в README.md")
         return
 
@@ -808,6 +834,15 @@ def update_readme_download_links(links: dict[str, str]):
         if re.search(throne_linux_pattern, content):
             content = re.sub(throne_linux_pattern, rf'\1{links["throne-linux"]}\2', content)
             log(f"✅ Ссылка на Throne Linux обновлена в README.md")
+
+    # Обновляем ссылку на Visual C++ Runtimes
+    if vc_runtime_link:
+        vc_runtime_pattern = r'(\*\*4\.\*\* Скачиваем архив и распаковываем.*?\[Ссылка\]\()https://[^\)]+(\))'
+        if re.search(vc_runtime_pattern, content):
+            content = re.sub(vc_runtime_pattern, rf'\1{vc_runtime_link}\2', content)
+            log(f"✅ Ссылка на Visual C++ Runtimes обновлена в README.md")
+        else:
+            log("⚠️ Не найдена ссылка на Visual C++ Runtimes в README.md")
 
     if content != original_content:
         try:
@@ -950,9 +985,10 @@ def main(dry_run: bool = False):
         with _UPDATED_FILES_LOCK:
             updated_files.add(26)
 
-    # Обновляем ссылки на скачивание v2rayNG и Throne
+    # Обновляем ссылки на скачивание v2rayNG, Throne и Visual C++ Runtimes
     release_links = fetch_latest_release_links()
-    update_readme_download_links(release_links)
+    vc_runtime_link = fetch_vc_runtime_link()
+    update_readme_download_links(release_links, vc_runtime_link)
 
     update_readme_table()
     git_commit_and_push(dry_run=dry_run)
