@@ -227,73 +227,6 @@ INSECURE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
-# Паттерн для обнаружения "мусора" в начале строки (когда перед протоколом есть лишние данные)
-PROTOCOL_PREFIX_PATTERN = re.compile(
-    r'^(.*?)(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://',
-    re.IGNORECASE,
-)
-
-# Паттерн для обнаружения base64-подобных строк (длинные строки без явного протокола)
-BASE64_PATTERN = re.compile(
-    r'^[A-Za-z0-9+/]{20,}={0,2}$'
-)
-
-
-def _is_base64_content(line: str) -> bool:
-    """Проверяет, является ли строка base64-кодированным конфигом."""
-    stripped = line.strip()
-    if not stripped:
-        return False
-    # Проверяем, является ли строка валидным base64
-    try:
-        # Убираем padding если есть
-        test_str = stripped.rstrip('=')
-        if BASE64_PATTERN.match(test_str):
-            # Пробуем декодировать
-            padding = 4 - (len(stripped) % 4)
-            if padding != 4:
-                stripped += '=' * padding
-            decoded = base64.b64decode(stripped).decode('utf-8', errors='ignore')
-            # Проверяем, содержит ли декодированное содержимое JSON (vmess) или URI-протокол
-            if decoded.startswith('{') or any(
-                decoded.startswith(proto + '://')
-                for proto in ['vmess', 'vless', 'trojan', 'ss', 'ssr', 'tuic', 'hysteria', 'hysteria2']
-            ):
-                return True
-    except Exception:
-        pass
-    return False
-
-
-def _analyze_line_content(line: str) -> dict:
-    """Анализирует строку и возвращает информацию о её содержимом."""
-    result = {
-        'is_empty': False,
-        'has_junk': False,
-        'is_base64': False,
-        'junk_prefix': '',
-    }
-    
-    stripped = line.strip()
-    if not stripped:
-        result['is_empty'] = True
-        return result
-    
-    # Проверяем на base64
-    if _is_base64_content(stripped):
-        result['is_base64'] = True
-        return result
-    
-    # Проверяем на мусор в начале
-    match = PROTOCOL_PREFIX_PATTERN.match(stripped)
-    if match:
-        junk = match.group(1)
-        if junk and junk.strip():
-            result['has_junk'] = True
-            result['junk_prefix'] = junk.strip()[:100]  # Ограничиваем длину
-    
-    return result
-
 
 def filter_insecure_configs(local_path: str, data: str, log_enabled: bool = True) -> tuple[str, int]:
     result = []
@@ -1036,82 +969,6 @@ def git_commit_and_push(dry_run: bool = False):
 
 # -------------------- MAIN --------------------
 
-def _print_final_stats():
-    """Анализирует все файлы и выводит итоговую статистику."""
-    stats_lines = []
-    stats_lines.append("")
-    stats_lines.append("=" * 60)
-    stats_lines.append("📊 ИТОГОВАЯ СТАТИСТИКА")
-    stats_lines.append("=" * 60)
-
-    total_empty = 0
-    total_base64 = 0
-    total_junk = 0
-    total_configs = 0
-
-    # Анализируем файлы 1-26
-    for file_idx in range(1, 27):
-        local_path = os.path.join(GITHUBMIRROR_DIR, f"{file_idx}.txt")
-        if not os.path.exists(local_path):
-            continue
-
-        try:
-            with open(local_path, "r", encoding="utf-8") as f:
-                content = f.read()
-        except Exception:
-            continue
-
-        lines = content.splitlines()
-        file_empty = 0
-        file_base64 = 0
-        file_junk = 0
-        file_junk_prefixes: list[str] = []
-        file_config = 0
-
-        for line in lines:
-            stripped = line.strip()
-            if not stripped:
-                file_empty += 1
-                continue
-
-            file_config += 1
-            analysis = _analyze_line_content(line)
-            if analysis['is_base64']:
-                file_base64 += 1
-            elif analysis['has_junk']:
-                file_junk += 1
-                if analysis['junk_prefix']:
-                    file_junk_prefixes.append(analysis['junk_prefix'])
-
-        total_empty += file_empty
-        total_base64 += file_base64
-        total_junk += file_junk
-        total_configs += file_config
-
-        stats_lines.append(f"")
-        stats_lines.append(f"--- {file_idx}.txt ({file_config} конфигов) ---")
-        if file_empty > 0:
-            stats_lines.append(f"  Пустых строк: {file_empty}")
-        if file_base64 > 0:
-            stats_lines.append(f"  Base64-кодированных: {file_base64}")
-        if file_junk > 0:
-            unique_prefixes = sorted(set(file_junk_prefixes))[:5]
-            stats_lines.append(f"  Строк с мусором: {file_junk}")
-            if unique_prefixes:
-                for prefix in unique_prefixes:
-                    stats_lines.append(f"    → `{prefix}`")
-
-    # Итого
-    stats_lines.append("")
-    stats_lines.append("-" * 60)
-    stats_lines.append(f"ИТОГО: {total_configs} конфигов | {total_base64} Base64 | {total_junk} с мусором | {total_empty} пустых строк")
-    stats_lines.append("=" * 60)
-
-    # Выводим в лог (общие сообщения)
-    for line in stats_lines:
-        log(line)
-
-
 def main(dry_run: bool = False):
     max_workers_download = min(DEFAULT_MAX_WORKERS, max(1, len(URLS)))
 
@@ -1137,9 +994,6 @@ def main(dry_run: bool = False):
 
     update_readme_table()
     git_commit_and_push(dry_run=dry_run)
-
-    # Итоговая статистика по всем файлам
-    _print_final_stats()
 
     # Вывод логов
     ordered_keys = sorted(k for k in LOGS_BY_FILE if k != 0)
