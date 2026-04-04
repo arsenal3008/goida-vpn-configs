@@ -247,7 +247,8 @@ def save_to_local_file(path: str, content: str):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
-    log(f"📁 Данные сохранены локально в {os.path.basename(path)}")
+    config_count = len([line for line in content.splitlines() if line.strip()])
+    log(f"📁 Данные сохранены локально в {os.path.basename(path)} с {config_count} конфигами")
 
 
 def extract_source_name(url: str) -> str:
