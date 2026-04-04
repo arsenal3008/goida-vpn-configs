@@ -276,7 +276,8 @@ def download_and_save(idx: int) -> tuple[str, int] | None:
             try:
                 with open(local_path, "r", encoding="utf-8") as f:
                     if f.read() == data:
-                        log(f"🔄 Изменений для {file_index}.txt нет.")
+                        config_count = len([line for line in data.splitlines() if line.strip()])
+                        log(f"🔄 Изменений для {file_index}.txt нет ({config_count} конфигов).")
                         return None
             except Exception:
                 pass
