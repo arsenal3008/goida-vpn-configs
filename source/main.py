@@ -227,6 +227,73 @@ INSECURE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# Паттерн для обнаружения "мусора" в начале строки (когда перед протоколом есть лишние данные)
+PROTOCOL_PREFIX_PATTERN = re.compile(
+    r'^(.*?)(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://',
+    re.IGNORECASE,
+)
+
+# Паттерн для обнаружения base64-подобных строк (длинные строки без явного протокола)
+BASE64_PATTERN = re.compile(
+    r'^[A-Za-z0-9+/]{20,}={0,2}$'
+)
+
+
+def _is_base64_content(line: str) -> bool:
+    """Проверяет, является ли строка base64-кодированным конфигом."""
+    stripped = line.strip()
+    if not stripped:
+        return False
+    # Проверяем, является ли строка валидным base64
+    try:
+        # Убираем padding если есть
+        test_str = stripped.rstrip('=')
+        if BASE64_PATTERN.match(test_str):
+            # Пробуем декодировать
+            padding = 4 - (len(stripped) % 4)
+            if padding != 4:
+                stripped += '=' * padding
+            decoded = base64.b64decode(stripped).decode('utf-8', errors='ignore')
+            # Проверяем, содержит ли декодированное содержимое JSON (vmess) или URI-протокол
+            if decoded.startswith('{') or any(
+                decoded.startswith(proto + '://')
+                for proto in ['vmess', 'vless', 'trojan', 'ss', 'ssr', 'tuic', 'hysteria', 'hysteria2']
+            ):
+                return True
+    except Exception:
+        pass
+    return False
+
+
+def _analyze_line_content(line: str) -> dict:
+    """Анализирует строку и возвращает информацию о её содержимом."""
+    result = {
+        'is_empty': False,
+        'has_junk': False,
+        'is_base64': False,
+        'junk_prefix': '',
+    }
+    
+    stripped = line.strip()
+    if not stripped:
+        result['is_empty'] = True
+        return result
+    
+    # Проверяем на base64
+    if _is_base64_content(stripped):
+        result['is_base64'] = True
+        return result
+    
+    # Проверяем на мусор в начале
+    match = PROTOCOL_PREFIX_PATTERN.match(stripped)
+    if match:
+        junk = match.group(1)
+        if junk and junk.strip():
+            result['has_junk'] = True
+            result['junk_prefix'] = junk.strip()[:100]  # Ограничиваем длину
+    
+    return result
+
 
 def filter_insecure_configs(local_path: str, data: str, log_enabled: bool = True) -> tuple[str, int]:
     result = []
@@ -270,6 +337,39 @@ def download_and_save(idx: int) -> tuple[str, int] | None:
     file_index = idx + 1
     try:
         data = fetch_data(url)
+        
+        # Анализируем содержимое файла перед фильтрацией
+        lines = data.splitlines()
+        empty_count = 0
+        base64_count = 0
+        junk_count = 0
+        junk_prefixes: list[str] = []
+        
+        for line in lines:
+            analysis = _analyze_line_content(line)
+            if analysis['is_empty']:
+                empty_count += 1
+            elif analysis['is_base64']:
+                base64_count += 1
+            elif analysis['has_junk']:
+                junk_count += 1
+                if analysis['junk_prefix']:
+                    junk_prefixes.append(analysis['junk_prefix'])
+        
+        # Логируем статистику
+        file_basename = f"{file_index}.txt"
+        if empty_count > 0:
+            log(f"📊 {file_basename}: пустых строк = {empty_count}")
+        if base64_count > 0:
+            log(f"📊 {file_basename}: Base64-кодированных конфигов = {base64_count}")
+        if junk_count > 0:
+            log(f"📊 {file_basename}: строк с мусором в начале = {junk_count}")
+            # Показываем уникальные префиксы мусора (максимум 5)
+            unique_prefixes = list(set(junk_prefixes))[:5]
+            if unique_prefixes:
+                prefixes_str = ", ".join(f"`{p}`" for p in unique_prefixes)
+                log(f"📊 {file_basename}: примеры мусора = {prefixes_str}")
+        
         data, _ = filter_insecure_configs(local_path, data)
 
         if os.path.exists(local_path):
@@ -537,6 +637,38 @@ def create_filtered_configs() -> str:
         try:
             with open(local_path, "r", encoding="utf-8") as f:
                 content = f.read()
+            
+            # Анализируем содержимое перед обработкой
+            original_lines = content.splitlines()
+            empty_count = 0
+            base64_count = 0
+            junk_count = 0
+            junk_prefixes: list[str] = []
+            
+            for line in original_lines:
+                analysis = _analyze_line_content(line)
+                if analysis['is_empty']:
+                    empty_count += 1
+                elif analysis['is_base64']:
+                    base64_count += 1
+                elif analysis['has_junk']:
+                    junk_count += 1
+                    if analysis['junk_prefix']:
+                        junk_prefixes.append(analysis['junk_prefix'])
+            
+            # Логируем статистику для файлов 1-25
+            file_basename = f"{file_idx}.txt"
+            if empty_count > 0:
+                log(f"📊 {file_basename}: пустых строк = {empty_count}")
+            if base64_count > 0:
+                log(f"📊 {file_basename}: Base64-кодированных конфигов = {base64_count}")
+            if junk_count > 0:
+                log(f"📊 {file_basename}: строк с мусором в начале = {junk_count}")
+                unique_prefixes = list(set(junk_prefixes))[:5]
+                if unique_prefixes:
+                    prefixes_str = ", ".join(f"`{p}`" for p in unique_prefixes)
+                    log(f"📊 {file_basename}: примеры мусора = {prefixes_str}")
+            
             content = re.sub(
                 r"(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://",
                 r"\n\1://",
@@ -569,6 +701,38 @@ def create_filtered_configs() -> str:
                 max_attempts=EXTRA_URL_MAX_ATTEMPTS,
                 allow_http_downgrade=False,
             )
+            
+            # Анализируем содержимое перед фильтрацией
+            lines = data.splitlines()
+            empty_count = 0
+            base64_count = 0
+            junk_count = 0
+            junk_prefixes: list[str] = []
+            
+            for line in lines:
+                analysis = _analyze_line_content(line)
+                if analysis['is_empty']:
+                    empty_count += 1
+                elif analysis['is_base64']:
+                    base64_count += 1
+                elif analysis['has_junk']:
+                    junk_count += 1
+                    if analysis['junk_prefix']:
+                        junk_prefixes.append(analysis['junk_prefix'])
+            
+            # Логируем статистику для дополнительных источников
+            source_name = extract_source_name(url)
+            if empty_count > 0:
+                log(f"📊 [26.txt/{source_name}]: пустых строк = {empty_count}")
+            if base64_count > 0:
+                log(f"📊 [26.txt/{source_name}]: Base64-кодированных конфигов = {base64_count}")
+            if junk_count > 0:
+                log(f"📊 [26.txt/{source_name}]: строк с мусором в начале = {junk_count}")
+                unique_prefixes = list(set(junk_prefixes))[:5]
+                if unique_prefixes:
+                    prefixes_str = ", ".join(f"`{p}`" for p in unique_prefixes)
+                    log(f"📊 [26.txt/{source_name}]: примеры мусора = {prefixes_str}")
+            
             data, count_removed = filter_insecure_configs(
                 os.path.join(GITHUBMIRROR_DIR, "26.txt"), data, log_enabled=False
             )
