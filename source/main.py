@@ -337,39 +337,6 @@ def download_and_save(idx: int) -> tuple[str, int] | None:
     file_index = idx + 1
     try:
         data = fetch_data(url)
-        
-        # Анализируем содержимое файла перед фильтрацией
-        lines = data.splitlines()
-        empty_count = 0
-        base64_count = 0
-        junk_count = 0
-        junk_prefixes: list[str] = []
-        
-        for line in lines:
-            analysis = _analyze_line_content(line)
-            if analysis['is_empty']:
-                empty_count += 1
-            elif analysis['is_base64']:
-                base64_count += 1
-            elif analysis['has_junk']:
-                junk_count += 1
-                if analysis['junk_prefix']:
-                    junk_prefixes.append(analysis['junk_prefix'])
-        
-        # Логируем статистику
-        file_basename = f"{file_index}.txt"
-        if empty_count > 0:
-            log(f"📊 {file_basename}: пустых строк = {empty_count}")
-        if base64_count > 0:
-            log(f"📊 {file_basename}: Base64-кодированных конфигов = {base64_count}")
-        if junk_count > 0:
-            log(f"📊 {file_basename}: строк с мусором в начале = {junk_count}")
-            # Показываем уникальные префиксы мусора (максимум 5)
-            unique_prefixes = list(set(junk_prefixes))[:5]
-            if unique_prefixes:
-                prefixes_str = ", ".join(f"`{p}`" for p in unique_prefixes)
-                log(f"📊 {file_basename}: примеры мусора = {prefixes_str}")
-        
         data, _ = filter_insecure_configs(local_path, data)
 
         if os.path.exists(local_path):
@@ -637,38 +604,6 @@ def create_filtered_configs() -> str:
         try:
             with open(local_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            
-            # Анализируем содержимое перед обработкой
-            original_lines = content.splitlines()
-            empty_count = 0
-            base64_count = 0
-            junk_count = 0
-            junk_prefixes: list[str] = []
-            
-            for line in original_lines:
-                analysis = _analyze_line_content(line)
-                if analysis['is_empty']:
-                    empty_count += 1
-                elif analysis['is_base64']:
-                    base64_count += 1
-                elif analysis['has_junk']:
-                    junk_count += 1
-                    if analysis['junk_prefix']:
-                        junk_prefixes.append(analysis['junk_prefix'])
-            
-            # Логируем статистику для файлов 1-25
-            file_basename = f"{file_idx}.txt"
-            if empty_count > 0:
-                log(f"📊 {file_basename}: пустых строк = {empty_count}")
-            if base64_count > 0:
-                log(f"📊 {file_basename}: Base64-кодированных конфигов = {base64_count}")
-            if junk_count > 0:
-                log(f"📊 {file_basename}: строк с мусором в начале = {junk_count}")
-                unique_prefixes = list(set(junk_prefixes))[:5]
-                if unique_prefixes:
-                    prefixes_str = ", ".join(f"`{p}`" for p in unique_prefixes)
-                    log(f"📊 {file_basename}: примеры мусора = {prefixes_str}")
-            
             content = re.sub(
                 r"(vmess|vless|trojan|ss|ssr|tuic|hysteria|hysteria2)://",
                 r"\n\1://",
@@ -701,38 +636,6 @@ def create_filtered_configs() -> str:
                 max_attempts=EXTRA_URL_MAX_ATTEMPTS,
                 allow_http_downgrade=False,
             )
-            
-            # Анализируем содержимое перед фильтрацией
-            lines = data.splitlines()
-            empty_count = 0
-            base64_count = 0
-            junk_count = 0
-            junk_prefixes: list[str] = []
-            
-            for line in lines:
-                analysis = _analyze_line_content(line)
-                if analysis['is_empty']:
-                    empty_count += 1
-                elif analysis['is_base64']:
-                    base64_count += 1
-                elif analysis['has_junk']:
-                    junk_count += 1
-                    if analysis['junk_prefix']:
-                        junk_prefixes.append(analysis['junk_prefix'])
-            
-            # Логируем статистику для дополнительных источников
-            source_name = extract_source_name(url)
-            if empty_count > 0:
-                log(f"📊 [26.txt/{source_name}]: пустых строк = {empty_count}")
-            if base64_count > 0:
-                log(f"📊 [26.txt/{source_name}]: Base64-кодированных конфигов = {base64_count}")
-            if junk_count > 0:
-                log(f"📊 [26.txt/{source_name}]: строк с мусором в начале = {junk_count}")
-                unique_prefixes = list(set(junk_prefixes))[:5]
-                if unique_prefixes:
-                    prefixes_str = ", ".join(f"`{p}`" for p in unique_prefixes)
-                    log(f"📊 [26.txt/{source_name}]: примеры мусора = {prefixes_str}")
-            
             data, count_removed = filter_insecure_configs(
                 os.path.join(GITHUBMIRROR_DIR, "26.txt"), data, log_enabled=False
             )
@@ -1133,6 +1036,82 @@ def git_commit_and_push(dry_run: bool = False):
 
 # -------------------- MAIN --------------------
 
+def _print_final_stats():
+    """Анализирует все файлы и выводит итоговую статистику."""
+    stats_lines = []
+    stats_lines.append("")
+    stats_lines.append("=" * 60)
+    stats_lines.append("📊 ИТОГОВАЯ СТАТИСТИКА")
+    stats_lines.append("=" * 60)
+
+    total_empty = 0
+    total_base64 = 0
+    total_junk = 0
+    total_configs = 0
+
+    # Анализируем файлы 1-26
+    for file_idx in range(1, 27):
+        local_path = os.path.join(GITHUBMIRROR_DIR, f"{file_idx}.txt")
+        if not os.path.exists(local_path):
+            continue
+
+        try:
+            with open(local_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except Exception:
+            continue
+
+        lines = content.splitlines()
+        file_empty = 0
+        file_base64 = 0
+        file_junk = 0
+        file_junk_prefixes: list[str] = []
+        file_config = 0
+
+        for line in lines:
+            stripped = line.strip()
+            if not stripped:
+                file_empty += 1
+                continue
+
+            file_config += 1
+            analysis = _analyze_line_content(line)
+            if analysis['is_base64']:
+                file_base64 += 1
+            elif analysis['has_junk']:
+                file_junk += 1
+                if analysis['junk_prefix']:
+                    file_junk_prefixes.append(analysis['junk_prefix'])
+
+        total_empty += file_empty
+        total_base64 += file_base64
+        total_junk += file_junk
+        total_configs += file_config
+
+        stats_lines.append(f"")
+        stats_lines.append(f"--- {file_idx}.txt ({file_config} конфигов) ---")
+        if file_empty > 0:
+            stats_lines.append(f"  Пустых строк: {file_empty}")
+        if file_base64 > 0:
+            stats_lines.append(f"  Base64-кодированных: {file_base64}")
+        if file_junk > 0:
+            unique_prefixes = sorted(set(file_junk_prefixes))[:5]
+            stats_lines.append(f"  Строк с мусором: {file_junk}")
+            if unique_prefixes:
+                for prefix in unique_prefixes:
+                    stats_lines.append(f"    → `{prefix}`")
+
+    # Итого
+    stats_lines.append("")
+    stats_lines.append("-" * 60)
+    stats_lines.append(f"ИТОГО: {total_configs} конфигов | {total_base64} Base64 | {total_junk} с мусором | {total_empty} пустых строк")
+    stats_lines.append("=" * 60)
+
+    # Выводим в лог (общие сообщения)
+    for line in stats_lines:
+        log(line)
+
+
 def main(dry_run: bool = False):
     max_workers_download = min(DEFAULT_MAX_WORKERS, max(1, len(URLS)))
 
@@ -1158,6 +1137,9 @@ def main(dry_run: bool = False):
 
     update_readme_table()
     git_commit_and_push(dry_run=dry_run)
+
+    # Итоговая статистика по всем файлам
+    _print_final_stats()
 
     # Вывод логов
     ordered_keys = sorted(k for k in LOGS_BY_FILE if k != 0)
