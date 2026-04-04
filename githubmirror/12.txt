@@ -4866,3 +4866,7 @@ vless://e013cae2-2922-4874-914d-abd98eb8342d@ww.parspas.ir:8880?path=%2F&securit
 
 vless://9e769ce1-34be-4e3f-b0a6-823f30eb8f69@104.17.147.22:2087?path=%2F&security=tls&encryption=none&host=smart.v2plusify.org&type=ws&sni=smart.v2plusify.org#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
 
+
+vless://97672826-3c6f-4143-8171-7153758198e6@twt.ghapol.ir:80?encryption=none&host=a.mesiandrol.ir&path=%2F&security=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://c4964970-2ea5-44e4-a75d-92479b6f8db3@twt.ghapol.ir:80?encryption=none&host=arb.shalkhi.ir&path=%2F&security=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
