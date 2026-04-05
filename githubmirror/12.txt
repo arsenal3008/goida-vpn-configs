@@ -1,17 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-vless://16a5322b-0db6-45b7-9506-5aec747d999d@85.133.221.61:543?security=none&encryption=none&headerType=none&type=tcp&path=/XIXVPN?ed=2560#%F0%9F%8C%90%20TCP-None%20%7C%20%40V2rayng_Fast
-
-vless://cf52ed42-4326-47b5-b6dc-322c0062761c@snapp.ir:80?encryption=none&security=none&type=ws&host=dl.avenflow.ir&path=%2F#%F0%9F%8C%90%20WS-None%20%7C%20%40V2rayng_Fast
-
-vless://a30e4791-d498-4d1e-8a5d-9fbe652163f6@185.206.231.93:53160?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40V2rayng_Fast
-
-vless://55122bef-b6b8-4134-a483-ed1dee79d39f@user11.ionosio.ir:2052/?type=ws&encryption=none&path=%2F&host=&security=none#%F0%9F%8C%90%20WS-None%20%7C%20%40V2rayng_Fast
-
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206MlRWUEtuYUF5U0dKYnRWdGlOU2Q5YTl4V3VrT3lseEFQekxSOG9MZFN3MD06em1WSGU4U25wcndSYnB5WUR4Sk1qdDIzMU5iOHlkTDRoOXo1SjJnK0p0cz1AcHN3bmVjZnguYXZhc2hvcC5pbmZvOjg0NDM=#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://80a4cead-eef6-41b7-bfdb-cad1564fbcc8@jll.az99x.info:8880?path=%2F&security=&encryption=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
-
 vless://80a4cead-eef6-41b7-bfdb-cad1564fbcc8@jll.az99x.info:8880?path=%2F&security=none&encryption=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
 
 
@@ -108,6 +96,8 @@ trojan://telegram-id-directvpn@13.37.173.17:22223?security=tls&alpn=http/1.1&hea
 vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@13.37.173.17:22224?type=ws&security=tls&path=%2Ftelegram-channel-vlessconfig&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
 
 trojan://telegram-id-privatevpns@13.37.173.17:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40filembad
+
+vless://80a4cead-eef6-41b7-bfdb-cad1564fbcc8@jll.az99x.info:8880?path=%2F&security=&encryption=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40ConfigX2ray
 
 vmess://eyJhZGQiOiAibWVsLnVzZHRiYW1hLmNvbSIsICJhaWQiOiAiMCIsICJhbHBuIjogIiIsICJmcCI6ICIiLCAiaG9zdCI6ICIiLCAiaWQiOiAiNWEzMDY3NzktMGJkYS00ZTNjLWIzYzQtNzk3YTBkY2VmNjIzIiwgImluc2VjdXJlIjogIjAiLCAibmV0IjogInRjcCIsICJwYXRoIjogIiIsICJwb3J0IjogIjg0NDMiLCAicHMiOiAiXHVkODNjXHVkZjEwIFRDUC1Ob25lIHwgQGZpbGVtYmFkIiwgInNjeSI6ICJhdXRvIiwgInNuaSI6ICIiLCAidGxzIjogIm5vbmUiLCAidHlwZSI6ICJub25lIiwgInYiOiAiMiJ9
 
@@ -303,6 +293,10 @@ vless://4dde0df3-aa67-417c-882e-28beb3886961@138.124.100.188:443?security=realit
 vless://57ba2ab1-a283-42eb-82ee-dc3561a805b8@45.131.209.130:8443?path=%2F57ba2ab1&security=tls&encryption=none&host=ovhwuxian.pai50288.uk&type=ws&sni=ovhwuxian.pai50288.uk#%F0%9F%8C%90%20WS-TLS%20%7C%20%40configraygan
 
 vless://21f4cdc7-ad07-4cc5-be4d-f033c25d3da1@188.213.199.35:40446?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40configraygan
+
+vless://a30e4791-d498-4d1e-8a5d-9fbe652163f6@185.206.231.93:53160?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40configraygan
+
+vless://cf52ed42-4326-47b5-b6dc-322c0062761c@snapp.ir:80?path=%2F&security=none&encryption=none&host=dl.avenflow.ir&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40configraygan
 
 vless://16a5322b-0db6-45b7-9506-5aec747d999d@85.133.221.61:543?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40configraygan
 
@@ -5008,3 +5002,21 @@ vmess://eyJ2IjogIjIiLCAicHMiOiAiXHVkODNjXHVkZjEwIFdTLVRMUyB8IEBmaWxlbWJhZCIsICJh
 vless://bc4d97ba-d54f-4555-ba71-f7421796d92c@185.143.234.111:443?security=tls&allowInsecure=0&encryption=none&type=ws&host=frontend.parhamm2.ir&path=/&sni=frontend.parhamm2.ir&fp=random#%F0%9F%8C%90%20WS-TLS%20%7C%20%40BrilliantGift
 
 vless://f46def27-0024-4c17-ad8e-b15d63577be8@snapp.ir:80?path=%2F&security=none&encryption=none&host=ar.liarashop.ir&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+ss://YWVzLTI1Ni1nY206MmEwNmY2MGQtZDkxOS1mYmFhLTZiYTgtYzg2MDhiMTBhZWQz@50759303385429592696046768059956.international-ixp.com:11602?type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+trojan://humanity@104.18.11.110:443?path=%2Fassignment&security=tls&fp=chrome&type=ws&sni=www.multiplydose.com#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
+
+vless://7df55721-5e0d-4678-8689-5083927a9e90@snapp.ir:80?path=%2F&security=none&encryption=none&host=arc.liarashop.ir&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://7b3e9632-2577-410e-af85-ec64c614644d@server.nyxserver.ir:11404/?type=ws&encryption=none&path=%2F&host=&security=none#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://2d98dfc4-6140-4582-8848-d36ee4b7fd3e@185.143.235.253:80?path=%2F%3Fed%3D2080&security=none&encryption=none&host=m.oppobot.ir&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40v2_mod_shop
+
+ss://YWVzLTI1Ni1nY206MmEwNmY2MGQtZDkxOS1mYmFhLTZiYTgtYzg2MDhiMTBhZWQzQDUwNzU5MzAzMzg1NDI5NTkyNjk2MDQ2NzY4MDU5OTU2LmludGVybmF0aW9uYWwtaXhwLmNvbToxMTYwMg==#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+ss://YWVzLTI1Ni1nY206NjYwYTU3YTEtMGMxOS0xMzJhLWNmODgtY2Q1NmFmNzJmNWUy@50759303385429592696046768059956.international-ixp.com:11602?type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://c6351d28-5e4e-463f-bed5-656cfb6ccf46@185.143.233.235:80?type=ws&host=vixon.portab.org#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://9bfded2b-d122-44e1-bf8a-69630bf9539b@link2x06226_73784.temp.veraspeed.ir:80?path=%2Ffilimo-video%2F177430809054030600%2F1774365690%2Fcb857b0770767a2b38b3ebc9d4c44d7fc5630fdd%2F196328x264new1-1080p.mp4%2Fs-20-v1-a1.…#%F0%9F%8C%90%20TCP-None%20%7C%20%40VIPV2rayNGNP
