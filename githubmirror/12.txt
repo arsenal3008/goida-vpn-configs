@@ -1,21 +1,5 @@
 ss://bm9uZTpmOGY3YUN6Y1BLYnNGOHAz@lil:360#%F0%9F%91%91
 
-vless://b82c73d1-4db9-44d1-a5f1-095a0ab1f2e7@technomobile.mytopmedia.site:69?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://be7efcd5-23f9-4281-e772-f88e310d02f1@hamrahiran.sorenashoping.xyz:47345?security=none&encryption=none&host=Fast.com&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://d3c170c2-6cb3-426b-9a41-ff3e48d07179@23.137.249.110:443?path=%2Fws&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=23.137.249.110#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-vless://8cb17084-7633-4952-acee-ec76d35a5c1a@w1star.meepo1.com:2083?type=tcp&encryption=none&path=%2Fapi&headerType=http&security=tls&fp=chrome&alpn=h2%2Chttp%2F1.1#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40ConfigX2ray
-
-vless://db3cf6e8-515a-47e0-8572-eb47bb611fb2@185.143.233.120:443?encryption=none&security=tls&sni=alef.ir.oadeflantrogm.realirshop.com&fp=randomized&type=ws&host=alef.ir.oadeflantrogm.realirshop.com&path=%2F%3Fed%3D443#%F0%9F%8C%90%20WS-TLS%20%7C%20%40filembad
-
-ss://Y2hhY2hhMjAtcG9seTEzMDU6NmUzZTQzZjQtMTJiNy00MmYxLThiOTMtNDFhMTUyZDU2MTJk@78.38.246.150:8446#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
-
-vless://7069b4eb-7a4a-4bd5-af1b-3b1f741e269c@godbay.preghost.ir:7070?mode=gun&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&fp=chrome&type=grpc&serviceName=aparat-stream&allowInsecure=0&sni=godbay.preghost.ir#%F0%9F%8C%90%20GRPC-TLS%20%7C%20%40filembad
-
-vless://7e0a6414-cf0d-4cef-9e91-e63841dc2b9c@node1.aerova.space:2439?type=ws&encryption=none&path=%2F&host=&security=none#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
-
 trojan://xj5pf05a-9s4h-x6mq-3c4u-6004285xh3gw@127.0.0.1:1080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
 
 trojan://r9zyh7dd-xhtm-mj2v-3bu9-3gvseldwuef9@127.0.0.1:2080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
@@ -100,9 +84,13 @@ vless://693c99cb-a893-40a6-a3a1-dc3af91a079d@94.183.185.26:58238?type=tcp&encryp
 
 vless://693c99cb-a893-40a6-a3a1-dc3af91a079d@94.183.185.26:58238?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
+vless://be7efcd5-23f9-4281-e772-f88e310d02f1@hamrahiran.sorenashoping.xyz:47345?security=none&encryption=none&host=Fast.com&headerType=http&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40v2_mod_shop
+
 vless://c40d826c-6406-4bbb-b9da-44a9c0160d23@pconf.q2k.ir:80?encryption=none&host=a2pc.yooring.ir&path=%2F&security=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40V2rayng_Fast
 
 vless://16ca4f6f-b540-691b-579a-ceb710a5eb7d@u11-unlim.standalonemsnew.cam:88?security=&encryption=none&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40V2rayng_Fast
+
+vless://8cb17084-7633-4952-acee-ec76d35a5c1a@w1star.meepo1.com:2083?type=tcp&encryption=none&path=%2Fapi&headerType=http&security=tls&fp=chrome&alpn=h2%2Chttp%2F1.1#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40V2rayng_Fast
 
 vless://693c99cb-a893-40a6-a3a1-dc3af91a079d@94.183.185.26:58238?security=&encryption=none&headerType=&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
 
@@ -5062,6 +5050,8 @@ trojan://bw36wkpc-e7wd-kgqp-3x1p-2q4svryu1vbs@127.0.0.1:4080?security=tls&type=t
 
 ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@212.102.53.193:443#%F0%9F%8C%90%20TCP-None%20%7C%20%40Trick_mobil
 
+ss://Y2hhY2hhMjAtcG9seTEzMDU6NmUzZTQzZjQtMTJiNy00MmYxLThiOTMtNDFhMTUyZDU2MTJk@78.38.246.150:8446#%F0%9F%8C%90%20TCP-None%20%7C%20%40Trick_mobil
+
 trojan://dah00m0g-b3c1-iekn-1h2h-vrimz13z1uzh@127.0.0.1:1080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
 
 trojan://08jp1hyd-3gvu-23t2-qmcx-2dl1ajqf2zah@127.0.0.1:2080?security=tls&type=tcp#%F0%9F%8C%90%20TCP-TLS%20%7C%20%40Trick_mobil
@@ -5418,3 +5408,29 @@ vless://c1d17981-7bc4-403a-994f-df6edad66c7b@185.143.233.5:80?path=%2F&security=
 
 vless://c1d17981-7bc4-403a-994f-df6edad66c7b@185.143.233.5:80?path=%2F&security=&encryption=none&host=sc5.hamidzarinjooi.ir&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
 
+
+vless://c1d17981-7bc4-403a-994f-df6edad66c7b@185.143.233.5:80?encryption=none&type=ws&path=/#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://54ad78eb-41a6-1ec4-8372-b98ee6e73967@prz.phooenix.pw:2096?security=&encryption=none&headerType=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://0c74a134-003a-4ced-b4e4-87630e0224db@de23.fastplus7.site:80/?type=ws&encryption=none&flow=&host=de23.fastplus11.ir&path=%2#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://45963c75-f9d2-4c90-93b2-20e6188f9873@final.usdtbama.com:8443?security=none&encryption=none&headerType=nonetype=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://4fa7d07a-7e1a-4ae6-b12f-ff02e54edaa7@188.121.125.121:3000?security=&encryption=none&headerType=&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://b899463b-4d44-4c32-8537-d10aa79169bd@v2.pcjxq.digital:17447?type=tcp&encryption=none&security=none#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://f3edbb15-06d9-422a-bb83-3fb81d924dad@185.143.233.232:80?path=%2F&security=none&encryption=none&host=web.kasrastone.site&type=ws#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vless://f08fd73b-6ec6-4bc5-80ec-34d3fa6cc6d5@1.9.reflecion.shop:35116?encryption=none&security=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://e4c9557e-0435-4669-8192-dda40aa188ee@v2ir03186.temp.veraspeed.ir:80?security=none&allowInsecure=0&encryption=none&type=ws&host=byebye.22.avenflow.ir&path=/filimo-video/177430809054030600/#%F0%9F%8C%90%20WS-None%20%7C%20%40filembad
+
+vmess://eyJhZGQiOiAiMTUyLjY3LjguMjA1IiwgImFpZCI6ICIwIiwgImFscG4iOiAiIiwgImZwIjogIiIsICJob3N0IjogIiIsICJpZCI6ICI5ZGI0YzcwOC1hZWY4LTQzNTktODIxYi0zOGU0Nzk5MGJlMGQiLCAibmV0IjogIndzIiwgInBhdGgiOiAiLyIsICJwb3J0IjogIjgwIiwgInBzIjogIlx1ZDgzY1x1ZGYxMCBXUy1Ob25lIHwgQGZpbGVtYmFkIiwgInNjeSI6ICJhdXRvIiwgInNuaSI6ICIiLCAidGxzIjogIiIsICJ0eXBlIjogIi0tLSIsICJ2IjogIjIifQ==
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@217.197.161.138:805#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBUmd2R1p5d0ErZ2FjZ0dWMjZCdm11MDUrd1ptUlcvaitBZFUrWjhCdDQ0PQ==@147.78.0.182:990#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
+
+vless://ef010b15-0522-47a9-aec8-e46d2c85989a@uncl.atlasc.ir:32432?encryption=none&headerType=http&host=www.aparat.com&path=%2F&security=none&type=tcp#%F0%9F%8C%90%20TCP-None%20%7C%20%40filembad
