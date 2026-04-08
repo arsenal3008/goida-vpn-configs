@@ -78,7 +78,7 @@
 | 12 | [`12.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/12.txt) | [expressalaki/ExpressVPN](https://raw.githubusercontent.com/expressalaki/ExpressVPN/refs/heads/main/configs3.txt) | 02:50 | 09.04.2026 |
 | 13 | [`13.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/13.txt) | [MahsaNetConfigTopic/config](https://raw.githubusercontent.com/MahsaNetConfigTopic/config/refs/heads/main/xray_final.txt) | 02:50 | 09.04.2026 |
 | 14 | [`14.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/14.txt) | [LalatinaHub/Mineral](https://github.com/LalatinaHub/Mineral/raw/refs/heads/master/result/nodes) | 02:50 | 09.04.2026 |
-| 15 | [`15.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/15.txt) | [miladtahanian/Config-Collector](https://raw.githubusercontent.com/miladtahanian/Config-Collector/refs/heads/main/mixed_iran.txt) | 02:50 | 09.04.2026 |
+| 15 | [`15.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/15.txt) | [miladtahanian/Config-Collector](https://raw.githubusercontent.com/miladtahanian/Config-Collector/refs/heads/main/mixed_iran.txt) | 02:58 | 09.04.2026 |
 | 16 | [`16.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/16.txt) | [Pawdroid/Free-servers](https://raw.githubusercontent.com/Pawdroid/Free-servers/refs/heads/main/sub) | 02:50 | 09.04.2026 |
 | 17 | [`17.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/17.txt) | [MhdiTaheri/V2rayCollector_Py](https://github.com/MhdiTaheri/V2rayCollector_Py/raw/refs/heads/main/sub/Mix/mix.txt) | 02:50 | 09.04.2026 |
 | 18 | [`18.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/18.txt) | [free18/v2ray](https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/v.txt) | 07:05 | 08.04.2026 |
@@ -89,7 +89,7 @@
 | 23 | [`23.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/23.txt) | [igareck/vpn-configs-for-russia](https://github.com/igareck/vpn-configs-for-russia/raw/refs/heads/main/BLACK_VLESS_RUS.txt) | 02:50 | 09.04.2026 |
 | 24 | [`24.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/24.txt) | [Mr-Meshky/vify](https://github.com/Mr-Meshky/vify/raw/refs/heads/main/configs/vless.txt) | 02:50 | 09.04.2026 |
 | 25 | [`25.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/25.txt) | [V2RayRoot/V2RayConfig](https://raw.githubusercontent.com/V2RayRoot/V2RayConfig/refs/heads/main/Config/vless.txt) | 02:50 | 09.04.2026 |
-| 26 | [`26.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | [Обход SNI/CIDR белых списков](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | 02:53 | 09.04.2026 |
+| 26 | [`26.txt`](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | [Обход SNI/CIDR белых списков](https://github.com/arsenal3008/goida-vpn-configs/raw/refs/heads/main/githubmirror/26.txt) | 02:58 | 09.04.2026 |
 
 ## 📊 Статистика репозитория
 | Показатель | Значение |
