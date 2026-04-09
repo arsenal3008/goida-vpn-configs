@@ -2,13 +2,12 @@ name: Auto Update
 
 on:
   schedule:
-    - cron: "*/9 * * * *"
-  workflow_dispatch:
+    - cron: '0 * * * *'      # ← каждый час ровно в :00 (UTC)
+  workflow_dispatch:         # можно запускать вручную
 
 jobs:
   update-files:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
