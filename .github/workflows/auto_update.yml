@@ -1,63 +1,45 @@
 name: Auto Update goida-vpn-configs
 
-# Запуск: каждый час в 17-ю минуту (UTC) + возможность запустить вручную
 on:
   schedule:
-    - cron: '17 * * * *'      # Рекомендуемое время — меньше задержек
+    - cron: '17 * * * *'     # каждый час в 17-ю минуту (меньше задержек)
   workflow_dispatch:
 
-# Имя запуска будет видно с датой и временем
-run-name: 'Auto Update — ${{ github.event_name == 'schedule' && 'Scheduled' || 'Manual' }} run at ${{ github.event.schedule || 'now' }}'
-
 jobs:
-  update-files:
+  update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
-    # Защита от одновременных запусков
-    concurrency:
-      group: ${{ github.workflow }}
-      cancel-in-progress: false
-
-    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
           token: ${{ secrets.MY_TOKEN }}
-          fetch-depth: 0   # Нужно для нормальной работы git
+          fetch-depth: 0
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
-      - name: Cache pip packages
+      - name: Cache pip
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('source/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
 
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Install dependencies
-        run: cd source && pip install --no-cache-dir -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          cd source && pip install --no-cache-dir -r requirements.txt
 
       - name: Run main.py
         env:
           MY_TOKEN: ${{ secrets.MY_TOKEN }}
         run: cd source && python main.py
-
-      - name: Show last commit (for debugging)
-        if: always()
-        run: git log --oneline -1
