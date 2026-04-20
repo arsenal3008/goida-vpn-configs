@@ -125,6 +125,7 @@ EXTRA_URLS_FOR_26 = [
     "https://raw.githubusercontent.com/ByeWhiteLists/ByeWhiteLists2/refs/heads/main/ByeWhiteLists2.txt",
     "https://white-lists.vercel.app/api/filter?code=RU",
     "https://wlrus.lol/confs/selected.txt",
+    "https://etoneya.a9fm.site/1",
 ]
 
 EXTRA_URL_TIMEOUT = int(os.environ.get("EXTRA_URL_TIMEOUT", "6"))
